@@ -1,14 +1,13 @@
 package com.bezkoder.springjwt.security.services;
 
+import com.bezkoder.springjwt.models.ERole;
 import com.bezkoder.springjwt.models.User;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-import java.util.Collection;
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class UserDetailsImpl implements UserDetails {
@@ -16,40 +15,31 @@ public class UserDetailsImpl implements UserDetails {
 
   private Long id;
 
-  private String username;
+  private String last_name;
 
   private String email;
 
   @JsonIgnore
   private String password;
 
-  private Collection<? extends GrantedAuthority> authorities;
+  private ERole user_type;
 
-  public UserDetailsImpl(Long id, String username, String email, String password,
-      Collection<? extends GrantedAuthority> authorities) {
+  public UserDetailsImpl(Long id, String last_name, String email, String password,
+                         ERole eRole) {
     this.id = id;
-    this.username = username;
+    this.last_name = last_name;
     this.email = email;
     this.password = password;
-    this.authorities = authorities;
+    this.user_type = eRole;
   }
 
   public static UserDetailsImpl build(User user) {
-    List<GrantedAuthority> authorities = user.getRoles().stream()
-        .map(role -> new SimpleGrantedAuthority(role.getName().name()))
-        .collect(Collectors.toList());
-
     return new UserDetailsImpl(
         user.getId(), 
-        user.getUsername(), 
+        user.getLast_name(),
         user.getEmail(),
         user.getPassword(), 
-        authorities);
-  }
-
-  @Override
-  public Collection<? extends GrantedAuthority> getAuthorities() {
-    return authorities;
+        user.getUser_type());
   }
 
   public Long getId() {
@@ -61,13 +51,19 @@ public class UserDetailsImpl implements UserDetails {
   }
 
   @Override
+  public Collection<? extends GrantedAuthority> getAuthorities() {
+    return Arrays.asList(user_type).stream().map(role -> new SimpleGrantedAuthority(role.name()))
+            .collect(Collectors.toList());
+  }
+
+  @Override
   public String getPassword() {
     return password;
   }
 
   @Override
   public String getUsername() {
-    return username;
+    return last_name;
   }
 
   @Override

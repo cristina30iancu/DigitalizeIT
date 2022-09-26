@@ -1,7 +1,11 @@
 package com.bezkoder.springjwt.controllers;
 
+import com.bezkoder.springjwt.models.ERole;
+import com.bezkoder.springjwt.models.User;
 import com.bezkoder.springjwt.payload.request.LoginRequest;
+import com.bezkoder.springjwt.payload.request.SignupRequest;
 import com.bezkoder.springjwt.payload.response.JwtResponse;
+import com.bezkoder.springjwt.payload.response.MessageResponse;
 import com.bezkoder.springjwt.repository.UserRepository;
 import com.bezkoder.springjwt.security.jwt.JwtUtils;
 import com.bezkoder.springjwt.security.services.UserDetailsImpl;
@@ -15,7 +19,9 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 @CrossOrigin(origins = "*", maxAge = 3600)
@@ -41,7 +47,7 @@ public class AuthController {
   public ResponseEntity<?> authenticateUser(@Valid @RequestBody LoginRequest loginRequest) {
 
     Authentication authentication = authenticationManager.authenticate(
-        new UsernamePasswordAuthenticationToken(loginRequest.getUsername(), loginRequest.getPassword()));
+        new UsernamePasswordAuthenticationToken(loginRequest.getEmail(), loginRequest.getPassword()));
 
     SecurityContextHolder.getContext().setAuthentication(authentication);
     String jwt = jwtUtils.generateJwtToken(authentication);
@@ -53,14 +59,13 @@ public class AuthController {
 
     return ResponseEntity.ok(new JwtResponse(jwt, 
                          userDetails.getId(), 
-                         userDetails.getUsername(), 
-                         userDetails.getEmail(), 
+                         userDetails.getEmail(),
                          roles));
   }
 
 //  @PostMapping("/signup")
 //  public ResponseEntity<?> registerUser(@Valid @RequestBody SignupRequest signUpRequest) {
-//    if (userRepository.existsByUsername(signUpRequest.getUsername())) {
+//    if (userRepository.existsByUsername(signUpRequest.getEmail())) {
 //      return ResponseEntity
 //          .badRequest()
 //          .body(new MessageResponse("Error: Username is already taken!"));
@@ -73,15 +78,15 @@ public class AuthController {
 //    }
 //
 //    // Create new user's account
-//    User user = new User(signUpRequest.getUsername(),
+//    User user = new User(signUpRequest.getEmail(),
 //               signUpRequest.getEmail(),
 //               encoder.encode(signUpRequest.getPassword()));
 //
 //    Set<String> strRoles = signUpRequest.getRole();
-//    Set<Role> roles = new HashSet<>();
+//    Set<ERole> roles = new HashSet<>();
 //
 //    if (strRoles == null) {
-//      Role userRole = roleRepository.findByName(ERole.ROLE_USER)
+//      ERole userRole = roleRepository.findByName(ERole.ROLE_USER)
 //          .orElseThrow(() -> new RuntimeException("Error: Role is not found."));
 //      roles.add(userRole);
 //    } else {
