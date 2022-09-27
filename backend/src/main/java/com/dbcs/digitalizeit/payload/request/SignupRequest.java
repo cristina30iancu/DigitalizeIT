@@ -1,5 +1,7 @@
 package com.dbcs.digitalizeit.payload.request;
 
+import com.dbcs.digitalizeit.models.EmployeeRole;
+
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
@@ -7,27 +9,20 @@ import java.util.Set;
 
 public class SignupRequest {
   @NotBlank
-  @Size(min = 3, max = 20)
-  private String username;
-
-  @NotBlank
   @Size(max = 50)
   @Email
   private String email;
-
-  private Set<String> role;
+  @NotBlank
+  @Size(max = 50)
+  private String last_name;
+  @NotBlank
+  @Size(max = 50)
+  private String first_name;
+  private EmployeeRole role;
 
   @NotBlank
   @Size(min = 6, max = 40)
   private String password;
-
-  public String getUsername() {
-    return username;
-  }
-
-  public void setUsername(String username) {
-    this.username = username;
-  }
 
   public String getEmail() {
     return email;
@@ -45,11 +40,27 @@ public class SignupRequest {
     this.password = password;
   }
 
-  public Set<String> getRole() {
+  public EmployeeRole getRole() {
     return this.role;
   }
 
-  public void setRole(Set<String> role) {
+  public void setRole(EmployeeRole role) {
     this.role = role;
+  }
+
+  public String getLast_name() {
+    return last_name;
+  }
+
+  public void setLast_name(String last_name) {
+    this.last_name = last_name;
+  }
+
+  public String getFirst_name() {
+    return first_name;
+  }
+
+  public void setFirst_name(String first_name) {
+    this.first_name = first_name;
   }
 }

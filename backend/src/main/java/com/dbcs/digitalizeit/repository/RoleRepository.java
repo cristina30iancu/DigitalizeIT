@@ -10,5 +10,5 @@ import com.dbcs.digitalizeit.models.Role;
 
 @Repository
 public interface RoleRepository extends JpaRepository<Role, Long> {
-  Optional<Role> findByName(EmployeeRole name);
+    Optional<Role> findByName(EmployeeRole name);
 }
