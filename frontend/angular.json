@@ -1,11 +1,18 @@
 {
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "cli": {
+    "analytics": false
+  },
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "digitalize-it": {
+    "Angular12JwtAuth": {
       "projectType": "application",
-      "schematics": {},
+      "schematics": {
+        "@schematics/angular:application": {
+          "strict": true
+        }
+      },
       "root": "",
       "sourceRoot": "src",
       "prefix": "app",
@@ -13,7 +20,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/digitalize-it",
+            "outputPath": "dist/Angular12JwtAuth",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -23,7 +30,6 @@
               "src/assets"
             ],
             "styles": [
-              "node_modules/bootstrap/dist/css/bootstrap.min.css",
               "src/styles.css"
             ],
             "scripts": []
@@ -65,10 +71,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "digitalize-it:build:production"
+              "browserTarget": "Angular12JwtAuth:build:production"
             },
             "development": {
-              "browserTarget": "digitalize-it:build:development"
+              "browserTarget": "Angular12JwtAuth:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -76,7 +82,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "digitalize-it:build"
+            "browserTarget": "Angular12JwtAuth:build"
           }
         },
         "test": {
@@ -99,7 +105,5 @@
       }
     }
   },
-  "cli": {
-    "analytics": false
-  }
+  "defaultProject": "Angular12JwtAuth"
 }
