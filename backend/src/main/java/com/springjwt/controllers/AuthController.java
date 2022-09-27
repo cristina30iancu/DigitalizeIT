@@ -82,7 +82,7 @@ public class AuthController {
               encoder.encode(signUpRequest.getPassword()),null,null);
 
     ERole givenRole = signUpRequest.getRole();
-    if(givenRole.equals(ERole.IT_SUPORT) || givenRole.equals(ERole.MANAGER) ) {
+    if(givenRole.equals(ERole.IT_SUPPORT) || givenRole.equals(ERole.MANAGER) ) {
       user.setUser_type(givenRole);
     }
     else {
