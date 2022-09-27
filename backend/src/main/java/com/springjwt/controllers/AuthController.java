@@ -2,8 +2,8 @@ package com.springjwt.controllers;
 
 import com.springjwt.models.ERole;
 import com.springjwt.models.User;
-import com.springjwt.payload.request.LoginRequest;
-import com.springjwt.payload.request.SignupRequest;
+import com.springjwt.security.jwt.request.LoginRequest;
+import com.springjwt.security.jwt.request.SignupRequest;
 import com.springjwt.payload.response.JwtResponse;
 import com.springjwt.payload.response.MessageResponse;
 import com.springjwt.repository.UserRepository;

@@ -9,15 +9,16 @@ import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("newjoiner")
+@RequestMapping("/newjoiner")
 public class NewJoinerController {
     private final NewJoinerService newJoinerService;
 
-    @PostMapping
+    @PostMapping("/save")
     public NewJoiner saveNewJoiner(@RequestBody NewJoiner newJoiner) {
         return newJoinerService.saveNewJoiner(newJoiner);
     }
-    @GetMapping
+
+    @GetMapping("/get")
     public List<NewJoiner> getAllNotFinishedNewJoiners() {
         return newJoinerService.getAllNotFinishedNewJoiners();
     }

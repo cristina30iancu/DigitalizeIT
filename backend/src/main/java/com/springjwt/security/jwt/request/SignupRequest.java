@@ -1,4 +1,4 @@
-package com.springjwt.payload.request;
+package com.springjwt.security.jwt.request;
 
 import com.springjwt.models.ERole;
 

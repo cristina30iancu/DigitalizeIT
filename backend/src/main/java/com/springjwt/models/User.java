@@ -25,17 +25,17 @@ public class User {
   private Long id;
 
   @NotBlank
+  @Size(max = 50)
+  @Email
+  private String email;
+
+  @NotBlank
   @Size(max = 20)
   private String last_name;
 
   @NotBlank
   @Size(max = 20)
   private String first_name;
-
-  @NotBlank
-  @Size(max = 50)
-  @Email
-  private String email;
 
   @NotBlank
   @Size(max = 50)

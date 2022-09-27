@@ -3,6 +3,7 @@ package com.springjwt.security.services;
 import com.springjwt.models.ERole;
 import com.springjwt.models.User;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import lombok.Data;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -15,29 +16,29 @@ public class UserDetailsImpl implements UserDetails {
 
   private Long id;
 
-  private String last_name;
-
   private String email;
+
+  private String last_name;
 
   @JsonIgnore
   private String password;
 
   private ERole user_type;
 
-  public UserDetailsImpl(Long id, String last_name, String email, String password,
+  public UserDetailsImpl(Long id, String email, String last_name, String password,
                          ERole eRole) {
     this.id = id;
-    this.last_name = last_name;
     this.email = email;
+    this.last_name = last_name;
     this.password = password;
     this.user_type = eRole;
   }
 
   public static UserDetailsImpl build(User user) {
     return new UserDetailsImpl(
-        user.getId(), 
+        user.getId(),
+            user.getEmail(),
         user.getLast_name(),
-        user.getEmail(),
         user.getPassword(), 
         user.getUser_type());
   }
