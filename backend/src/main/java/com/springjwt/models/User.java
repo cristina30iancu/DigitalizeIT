@@ -48,7 +48,7 @@ public class User {
   private ERole user_type;
 
   @ManyToMany
-  private List<New_joiner> new_joiners;
+  private List<NewJoiner> new_joiners;
 
 //  @ManyToMany(fetch = FetchType.LAZY)
 //  @JoinTable(  name = "user_roles",

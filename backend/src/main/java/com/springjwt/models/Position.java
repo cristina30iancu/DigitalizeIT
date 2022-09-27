@@ -21,7 +21,7 @@ public class Position {
     private String name;
 
     @OneToMany
-    private List<New_joiner> new_joiners;
+    private List<NewJoiner> new_joiners;
 
     @ManyToMany
     private List<Equipment> equipment;
