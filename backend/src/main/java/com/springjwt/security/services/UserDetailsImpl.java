@@ -12,10 +12,10 @@ import java.util.stream.Collectors;
 
 public class UserDetailsImpl implements UserDetails {
   private static final long serialVersionUID = 1L;
-
+  private List<GrantedAuthority> authorities;
   private Long id;
 
-  private String last_name;
+  private String username;
 
   private String email;
 
@@ -24,22 +24,22 @@ public class UserDetailsImpl implements UserDetails {
 
   private ERole user_type;
 
-  public UserDetailsImpl(Long id, String last_name, String email, String password,
-                         ERole eRole) {
+  public UserDetailsImpl(Long id, String username, String email, String password,
+                         List<GrantedAuthority> authorities) {
     this.id = id;
-    this.last_name = last_name;
+    this.username = username;
     this.email = email;
     this.password = password;
-    this.user_type = eRole;
+    this.authorities = authorities;
   }
 
   public static UserDetailsImpl build(User user) {
     return new UserDetailsImpl(
         user.getId(), 
-        user.getLast_name(),
+        user.getUsername(),
         user.getEmail(),
-        user.getPassword(), 
-        user.getUser_type());
+        user.getPassword(),
+            (List<GrantedAuthority>) user.getAuthorities());
   }
 
   public Long getId() {
@@ -52,8 +52,9 @@ public class UserDetailsImpl implements UserDetails {
 
   @Override
   public Collection<? extends GrantedAuthority> getAuthorities() {
-    return Arrays.asList(user_type).stream().map(role -> new SimpleGrantedAuthority(role.name()))
-            .collect(Collectors.toList());
+    return authorities;
+//            Arrays.asList(user_type).stream().map(role -> new SimpleGrantedAuthority(role.name()))
+//            .collect(Collectors.toList());
   }
 
   @Override
@@ -63,7 +64,7 @@ public class UserDetailsImpl implements UserDetails {
 
   @Override
   public String getUsername() {
-    return last_name;
+    return username;
   }
 
   @Override

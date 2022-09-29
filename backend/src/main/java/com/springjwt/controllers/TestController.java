@@ -1,6 +1,13 @@
 package com.springjwt.controllers;
 
+import com.springjwt.models.ERole;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.context.SecurityContext;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -16,20 +23,23 @@ public class TestController {
   }
 
   @GetMapping("/user")
-  @PreAuthorize("hasRole('USER') or hasRole('MODERATOR') or hasRole('ADMIN')")
   public String userAccess() {
-    return "User Content.";
+    SecurityContext securityContext = SecurityContextHolder.getContext();
+    Authentication authentication = securityContext.getAuthentication();
+    if(authentication.getAuthorities().stream()
+            .filter(a-> a.getAuthority().equals(ERole.MANAGER.name())).count() ==1)
+   return "Succes for MANAGER";
+   else return "User unauthorized";
   }
 
   @GetMapping("/mod")
-  @PreAuthorize("hasRole('MODERATOR')")
   public String moderatorAccess() {
-    return "Moderator Board.";
+    SecurityContext securityContext = SecurityContextHolder.getContext();
+    Authentication authentication = securityContext.getAuthentication();
+    if(authentication.getAuthorities().stream()
+            .filter(a-> a.getAuthority().equals(ERole.IT_SUPPORT.name())).count() ==1)
+      return "Succes for IT_SUPPORT";
+    else return "User unauthorized";
   }
 
-  @GetMapping("/admin")
-  @PreAuthorize("hasRole('ADMIN')")
-  public String adminAccess() {
-    return "Admin Board.";
-  }
 }
