@@ -16,7 +16,6 @@ import java.util.Set;
 
 @Entity
 @Data
-
 @Table(name = "users", 
     uniqueConstraints = { 
       @UniqueConstraint(columnNames = "username"),
@@ -24,6 +23,7 @@ import java.util.Set;
     })
 @NoArgsConstructor
 @AllArgsConstructor
+@Builder
 public class JwtUser implements UserDetails {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
