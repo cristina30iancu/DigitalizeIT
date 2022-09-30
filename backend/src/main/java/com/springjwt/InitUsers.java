@@ -16,18 +16,20 @@ public class InitUsers implements CommandLineRunner {
     private final PasswordEncoder passwordEncoder;
     @Override
     public void run(String... args) throws Exception {
-        if (userService.findUserByEmail("alex@test.com").isEmpty()) {
+    // De aici se face adaugarea userilor, pur si simplu inlocuiesti valori
+        if (userService.findUserByEmail("ana@test.com").isEmpty()) {
             JwtUser u = userService.save(JwtUser.builder()
                     .id(null)
-                    .lastName("Alex")
-                    .firstName("Cosmin")
-                    .email("alex@gmail.com")
+                    .lastName("Ana")
+                    .firstName("Maria")
+                    .email("ana@gmail.com")
                     .password(passwordEncoder.encode("123456"))
-                    .username("alex")
-                    .userType(Set.of(ERole.ROLE_MANAGER))
+                    .username("ana")
+                    .userType(Set.of(ERole.ROLE_IT_SUPPORT))
                     .build());
             userService.save(u);
         }
+
     }
 }
 */

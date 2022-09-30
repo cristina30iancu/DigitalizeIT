@@ -4,7 +4,9 @@ import com.springjwt.models.JwtUser;
 import com.springjwt.repository.UserRepository;
 import com.springjwt.service.UserService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -14,16 +16,22 @@ import java.util.List;
 public class TestController {
     private final UserService userService;
 
-    @GetMapping("/manager")
+    @GetMapping("/manager") // toate endpoint urile care sunt specifice unui manager o sa aiba "/manager" la inceput
     public TestMessage userEndpoint() {
-        return new TestMessage("Hello user!");
+        return new TestMessage("Hello manager!");
     }
 
-    @GetMapping("/it_support")
+    @GetMapping("/it_support") // toate endpoint urile care sunt specifice unui manager o sa aiba "/it_support" la inceput
     public TestMessage adminEndpoint() {
-        return new TestMessage("Hello admin!");
+        return new TestMessage("Hello it_support!");
     }
 
     @GetMapping("/users")
     public List<JwtUser> getAllUsers(){return userService.getAllUsers();}
+
+    @DeleteMapping("/delete/{userId}")
+    public void deleteUser(@PathVariable("userId") Long id){
+        userService.deleteUserById(id);
+    }
+
 }

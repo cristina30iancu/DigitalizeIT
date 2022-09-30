@@ -36,4 +36,6 @@ public class UserService {
     public List<JwtUser> getAllUsers(){
         return userRepository.findAll();
     }
+
+    public void deleteUserById(Long userId){userRepository.deleteById(userId);}
 }

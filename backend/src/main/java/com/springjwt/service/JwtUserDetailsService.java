@@ -14,6 +14,7 @@ import org.springframework.stereotype.Service;
 public class JwtUserDetailsService implements UserDetailsService {
     private final UserService userService;
 
+    // Aici am facut in asa fel incat sa se paote face login cu email
     @Override
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
         JwtUser jwtUser = userService.getUserByEmail(email);
