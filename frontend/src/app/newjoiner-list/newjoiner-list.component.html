@@ -1,0 +1,11 @@
+<h1>My To Do</h1>
+<p>
+    <label for="username">Change your username:</label>
+    <input id="username" type="text" [(ngModel)]="username" />
+</p>
+
+<p>Your list contains {{newjoiners.length}}</p>
+<ul>
+    <app-newjoiner  *ngFor="let newJoiner of newjoiners; index as i;" [index]="i" [newJoiner]="newJoiner.id < 10 ? emptyNewJoiner : newJoiner">
+    </app-newjoiner>
+</ul>

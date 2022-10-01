@@ -68,6 +68,12 @@ public class JwtUser implements UserDetails {
     return authorities;
   }
 
+  public JwtUser(String email, String password, Collection<? extends GrantedAuthority> roles ){
+    this.email =email;
+    this.password = password;
+    for(GrantedAuthority r : roles)
+      this.userType.add(ERole.valueOf(r.getAuthority()));
+  }
   @Override
   public boolean isAccountNonExpired() {
     return true;

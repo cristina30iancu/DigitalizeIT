@@ -1,0 +1,16 @@
+<!-- [ngStyle]="{'backgound-color': '#ccc'}" -->
+<!-- style="background-color: #ccc; font-size: 20px;" -->
+<li  [ngClass]="newJoiner.id < 10 ? 'empty-todo' : 'regular-todo'"
+    [ngStyle]="{
+        'background-color': '#ccc',
+        'font-size': '20px'
+    }" data-color="#63ac22" appEmphasized>
+    <!-- [attr.data-color]="randomColor()" -->
+    {{newJoiner.last_name | uppercase | slice:0:30}}
+    <ng-container *ngIf="newJoiner.last_name && newJoiner.last_name.length > 30">
+        ...
+    </ng-container>
+    (id = {{newJoiner.id}})
+    <span *ngIf="newJoiner.done">v</span>
+    <span *ngIf="!newJoiner.done">x</span>
+</li>

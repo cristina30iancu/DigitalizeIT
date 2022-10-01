@@ -2,6 +2,7 @@ package com.springjwt.security;
 
 import com.auth0.jwt.algorithms.Algorithm;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.springjwt.models.JwtUser;
 import com.springjwt.service.UserService;
 import com.auth0.jwt.JWT;
 import lombok.extern.slf4j.Slf4j;
@@ -38,13 +39,15 @@ public class AuthSuccessHandler extends SimpleUrlAuthenticationSuccessHandler {
     public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response,
                                         Authentication authentication) throws IOException, ServletException {
         UserDetails principal = (UserDetails) authentication.getPrincipal();
+        JwtUser jwtUser = new JwtUser(principal.getUsername(), principal.getPassword(),principal.getAuthorities());
         String token = JWT.create()
                 .withSubject(userService.getUserByUsername(principal.getUsername()).getEmail())
                 .withExpiresAt(Instant.ofEpochMilli(ZonedDateTime.now(ZoneId.systemDefault()).toInstant().toEpochMilli() + expTime))
                 .sign(Algorithm.HMAC256(secret));
         response.addHeader("Authorization", "Bearer " + token);
         response.addHeader("Content-Type", "application/json");
-        response.getWriter().write("{\"token\": \""+token+"\"}");
+        response.getWriter().write("{\"token\": \""+token+"\", "+"\"user\": {\"username\":\""
+                +principal.getUsername()+"\", \"role\":\""+principal.getAuthorities().toArray()[0]+"\"}}");
     }
 
 

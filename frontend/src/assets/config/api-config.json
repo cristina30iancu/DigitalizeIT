@@ -1,0 +1,12 @@
+{
+    "urlParts": {
+        "protocol": "http",
+        "server": "localhost",
+        "port": 8085
+    },
+    "endpoints": [
+        {
+            "name": "newjoiner"
+        }
+    ]
+}
