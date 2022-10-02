@@ -25,7 +25,7 @@ public class NewJoinerService {
         return newJoinerRepository.save(newJoiner);
     }
     public List<NewJoiner> getAllNewJoiners() {
-        return newJoinerRepository.getAll();
+        return newJoinerRepository.findAll();
     }
 
     public List<NewJoiner> getNewJoinerListByRole() {
@@ -33,6 +33,7 @@ public class NewJoinerService {
                 SecurityContextHolder.getContext().getAuthentication().getAuthorities();
 
 
+        System.out.println((String)SecurityContextHolder.getContext().getAuthentication().getPrincipal());
         JwtUser currentlyAuthenticated = userService.getUserByEmail((String)SecurityContextHolder.getContext().getAuthentication().getPrincipal());
 
         //GrantedAuthority user = users.hasNext()? users.next() : null;

@@ -2,6 +2,7 @@ package com.springjwt.controller;
 
 import com.springjwt.models.NewJoiner;
 import com.springjwt.service.NewJoinerService;
+import com.springjwt.service.PositionService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
@@ -9,7 +10,7 @@ import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("newJoiner")
+@RequestMapping("/newJoiner")
 public class NewJoinerController {
     private final NewJoinerService newJoinerService;
 

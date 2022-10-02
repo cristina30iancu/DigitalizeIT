@@ -24,7 +24,11 @@ public class UserService {
     }
 
     public JwtUser getUserByEmail(String email){
-        return userRepository.findUserByEmail(email)
+        Optional<JwtUser> userOptional = userRepository.findUserByEmail(email);
+        if(userOptional.isEmpty()){
+            userOptional = userRepository.findUserByUsername(email);
+        }
+        return userOptional
                 .orElseThrow(() -> new EntityNotFoundException("User not found by email!"));
     }
 

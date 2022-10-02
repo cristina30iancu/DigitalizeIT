@@ -1,4 +1,4 @@
-/*
+
 package com.springjwt;
 import com.springjwt.models.ERole;
 import com.springjwt.models.JwtUser;
@@ -17,19 +17,18 @@ public class InitUsers implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
     // De aici se face adaugarea userilor, pur si simplu inlocuiesti valori
-        if (userService.findUserByEmail("ana@test.com").isEmpty()) {
-            JwtUser u = userService.save(JwtUser.builder()
-                    .id(null)
-                    .lastName("Ana")
-                    .firstName("Maria")
-                    .email("ana@gmail.com")
-                    .password(passwordEncoder.encode("123456"))
-                    .username("ana")
-                    .userType(Set.of(ERole.ROLE_IT_SUPPORT))
-                    .build());
-            userService.save(u);
-        }
+//        if (userService.findUserByEmail("ana@test.com").isEmpty()) {
+//            JwtUser u = userService.save(JwtUser.builder()
+//                    .id(null)
+//                    .lastName("Ana")
+//                    .firstName("Maria")
+//                    .email("ana@gmail.com")
+//                    .password(passwordEncoder.encode("123456"))
+//                    .username("ana")
+//                    .userType(Set.of(ERole.ROLE_IT_SUPPORT))
+//                    .build());
+//            userService.save(u);
+//        }
 
     }
 }
-*/

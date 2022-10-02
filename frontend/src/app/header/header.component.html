@@ -12,7 +12,12 @@
           <li class="nav-item">
             <a class="nav-link active" aria-current="page" routerLink="/admin"
             *ngIf="userService.roleMatch('ROLE_MANAGER')"
-            >Admin Dashboard</a>
+            >Add New Joiner</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" routerLink="/list"
+            *ngIf="userService.roleMatch('ROLE_MANAGER')"
+            >List New Joiners</a>
           </li>
           <li class="nav-item">
             <a class="nav-link active" aria-current="page" routerLink="/user"

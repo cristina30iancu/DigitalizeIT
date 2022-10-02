@@ -1,5 +1,49 @@
 <div class="container mt-5">
-    <div class="card text-center" style="color: green; padding: 20px;">
-        <h1>You are Admin</h1>
+    <div class="card text-center">
+        <h1>Add new joiner</h1>
+    </div>
+    <div class="col-md-12">
+        <div class="card card-container">
+            <img
+            id="profile-img"
+            src="//ssl.gstatic.com/accounts/ui/avatar_2x.png"
+            class="profile-img-card"
+          />
+            <form #loginForm="ngForm">
+                <input type="text"
+                ngModel
+                name="lastName"
+                id="lastName"
+                placeholder="Enter last name"
+                class="form-control mb-3"
+                >
+                <input type="text"
+                ngModel
+                name="firstName"
+                id="firstName"
+                placeholder="Enter first name"
+                class="form-control mb-3"
+                >
+                <select ngModel class="form-control mb-3" id="position" name="position">
+                    <option>Tech</option>
+                </select>
+                <input type="date"
+                ngModel
+                name="startDate"
+                id="startDate"
+                class="form-control mb-3"
+                >
+                <input type="text"
+                ngModel
+                name="project"
+                id="project"
+                placeholder="Enter project"
+                class="form-control mb-3"
+                >    
+                <input type="submit"
+                value="Add"
+                class="btn btn-outline-primary form-control rounded-0">
+            </form>
+        </div>
     </div>
 </div>
