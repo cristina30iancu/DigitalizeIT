@@ -23,7 +23,7 @@ export class LoginComponent implements OnInit {
       (response: any) => {
         console.log(response)
         this.userAuthService.setRoles(response.user.role);
-        this.userAuthService.setToken(response.jwtToken);
+        this.userAuthService.setToken(response.token);
 
         const role = response.user.role;
         if (role === 'ROLE_MANAGER') {

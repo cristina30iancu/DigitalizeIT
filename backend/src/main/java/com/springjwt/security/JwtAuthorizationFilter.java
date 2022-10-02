@@ -66,6 +66,7 @@ public class JwtAuthorizationFilter extends BasicAuthenticationFilter {
 
     private UsernamePasswordAuthenticationToken getAuthentication(HttpServletRequest request) {
         String token = request.getHeader(HttpHeaders.AUTHORIZATION);  // Nu cred ca avem nevoie de asta
+        System.out.println("\n\n\n"+token);
         if (token == null || !token.startsWith(TOKEN_PREFIX)) {
             return null;
         }
@@ -73,6 +74,7 @@ public class JwtAuthorizationFilter extends BasicAuthenticationFilter {
                 .build()
                 .verify(token.replace(TOKEN_PREFIX, ""))
                 .getSubject();
+        System.out.println(email);
         if (email == null) return null;
         UserDetails userDetails = jwtUserDetailsService.loadUserByUsername(email);
         return new UsernamePasswordAuthenticationToken(userDetails.getUsername(), null, userDetails.getAuthorities());
