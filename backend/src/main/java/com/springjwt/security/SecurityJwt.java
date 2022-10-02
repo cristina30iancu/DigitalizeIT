@@ -80,14 +80,14 @@ public class SecurityJwt {
         final CorsConfiguration configuration = new CorsConfiguration();
 
       configuration.setAllowedOrigins(Arrays.asList("*"));  //set access from all domains
-        configuration.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "DELETE"));
+        configuration.setAllowedMethods(Arrays.asList("GET","POST","PATCH", "PUT", "DELETE", "OPTIONS", "HEAD"));
 //        configuration.setAllowCredentials(true);
-        configuration.setAllowedHeaders(Arrays.asList("Authorization", "Cache-Control", "Content-Type"));
-
+        configuration.setAllowedHeaders(Arrays.asList("Authorization", "Cache-Control", "Content-Type","Requestor-Type"));
+        configuration.setExposedHeaders(Arrays.asList("X-Get-Header"));
+        configuration.setMaxAge(3600L);
         final UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
         source.registerCorsConfiguration("/**", configuration);
 
         return source;
     }
-
 }

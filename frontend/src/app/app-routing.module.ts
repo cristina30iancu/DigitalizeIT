@@ -12,7 +12,7 @@ const routes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'admin', component: AdminComponent, canActivate:[AuthGuard], data:{roles:['ROLE_MANAGER']} },
   { path: 'user', component: UserComponent ,  canActivate:[AuthGuard], data:{roles:['ROLE_IT_SUPPORT']} },
-  { path: 'list', component: ListNjComponent ,  canActivate:[AuthGuard], data:{roles:['ROLE_MANAGER']} },
+  { path: 'list', component: ListNjComponent},
   { path: 'login', component: LoginComponent },
   { path: 'forbidden', component: ForbiddenComponent }
 ];

@@ -1,110 +1,21 @@
   <div class="card shadow-lg rounded-9 big-card" style="width: 96vw; margin: 2vw;">
     <div class="container">
       <div class="row" style="display: flex; justify-content: center;">
-        <div class="col-3 card shadow-sm"
-          style="width: 35rem; height: fit-content; margin: 0 1em 2em 1em; padding: 0 !important;">
-          <img
-            src="https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/cozy-bedrooms-kevin-isbell-copy-of-2019-06-18-kevinisbell-0329-copy-1646768067.jpg"
-            class="card-img-top" data="0" alt="Logo image" />
-          <div class="card-body">
-            <p class="card-text text-muted">Entire Apartment * 3 Guests * 2 Beds</p>
-            <h5 class="card-title">Lovely and cosy apartment</h5>
-            <p class="card-text text-muted">
-              Some quick example text to build on the card title and make up the
-              bulk of the card's content.
+        <div class="col-3 card shadow-sm mt-3"
+          style="width: 25rem; height: fit-content; margin: 0 1em 2em 1em; padding: 0 !important;"
+          *ngFor="let nj of newJoiners">
+           <div class="card-body">
+                    <h5 class="card-title text-center">{{nj.lastName}} {{nj.firstName}}</h5>
+            <p class="card-text text-center">
+              Project: {{nj.project}}
             </p>
-            <button type="button" class="btn btn-outline-primary btn-sm mybtn">FROM / NIGHT</button>
-          </div>
-
-        </div>
-        <div class="card shadow-sm"
-          style="width: 35rem; height: fit-content; margin: 0 1em 2em 1em; padding: 0 !important;">
-          <img
-            src="https://www.parisperfect.com/blog/wp-content/uploads/2018/09/Warm-and-Cozy-Apartments-in-Paris-for-Fall-and-Winter-Stays-by-Paris-PerfectVolnay5.jpg"
-            class="card-img-top" data="1" alt="Logo image" />
-          <div class="card-body">
-            <p class="card-text text-muted">Private Room * 1 Guest * 1 Sofa</p>
-            <h5 class="card-title">Single room in the center of the city</h5>
-            <p class="card-text text-muted">
-              As Uber works through a huge amount of internal management turmoil, the company is also consolidating
-              more of its international business.
-            </p>
-            <button type="button" class="btn btn-outline-primary btn-sm mybtn2">FROM / NIGHT</button>
-          </div>
-        </div>
-        <div class="card shadow-sm"
-          style="width: 35rem; height: fit-content; margin: 0 1em 2em 1em; padding: 0 !important;">
-          <img
-            src="https://www.pufikhomes.com/wp-content/uploads/2019/08/uyutnyi-pastelnyi-interier-kvartiry-v-starom-kirpichnom-dome-v-stockgolme-pufikhomes-1.jpg"
-            class="card-img-top myimg" data="2" alt="Logo image" />
-          <div class="card-body">
-            <p class="card-text text-muted">Entire Apartment * 2 Guests * 2 Beds</p>
-            <h5 class="card-title">Independent house bedroom kitchen</h5>
-            <p class="card-text text-muted">
-              Music is something that every person has his or her own specific opinion
-              about. Different people have different taste, and various types of music.
-            </p>
-            <button type="button" class="btn btn-outline-primary btn-sm mybtn3">FROM / NIGHT</button>
-          </div>
-        </div>
-        <div class="card shadow-sm"
-          style="width: 35rem; height: fit-content; margin: 0 1em 2em 1em; padding: 0 !important;">
-          <img src="https://static01.nyt.com/images/2021/06/13/realestate/11rightathome/11rightathome-superJumbo.jpg"
-            class="card-img-top" data="3" alt="Logo image" />
-          <div class="card-body">
-            <p class="card-text text-muted">Entire Apartment * 2 Guest * 1 Bed</p>
-            <h5 class="card-title">Zen Gateaway with pool and garden</h5>
-            <p class="card-text text-muted">
-              Fast forward, rewind and more, without having to first invoke a specific skill, or even press
-              a button on their remote. </p>
-            <button type="button" class="btn btn-outline-primary btn-sm">FROM / NIGHT</button>
-          </div>
-        </div>
-        <div class="card shadow-sm"
-          style="width: 35rem; height: fit-content; margin: 0 1em 2em 1em; padding: 0 !important;">
-          <img src="https://www.boutique-homes.com/storage/images/2017/02/vacation_home_for_rent_nice_16_new.jpg?s=f"
-            class="card-img-top" alt="Logo image" data="4" />
-          <div class="card-body">
-            <p class="card-text">Entire Flat * 8 Guest * 3 Rooms</p>
-            <h5 class="card-title">Cheapest hotels for a luxury vacation</h5>
-            <p class="card-text text-muted">
-              Today, the company announced it will be combining its rides-on-demand
-              business and UberEATS.
-            </p>
-            <button type="button" class="btn btn-outline-primary btn-sm">FROM / NIGHT</button>
-          </div>
-        </div>
-        <div class="card shadow-sm"
-          style="width: 35rem; height: fit-content; height: auto; margin: 0 1em 2em 1em; padding: 0 !important;">
-          <img
-            src="https://balivacationhomes.com/wp-content/uploads/2021/05/la-villa-des-sens-bali-vacation-homes-02.jpg"
-            class="card-img-top" data="5" alt="Logo image" />
-          <div class="card-body">
-            <p class="card-text text-muted">Entire Apartment * 2 Guest * 1 Bed</p>
-            <h5 class="card-title">Cozy Double Room Near Station</h5>
-            <p class="card-text text-muted">
-              Different people have different taste, and various types of music have many
-              ways of leaving an impact on someone.
-            </p>
-            <button type="button" class="btn btn-outline-primary btn-sm">FROM / NIGHT</button>
-          </div>
-        </div>
-        <div class="row justify-content-end">
-          <div class="col-4">
-            <ul class="pagination">
-              <li class="disabled">
-                <a href="#">«</a>
-              </li>
-              <li><a href="#">1</a></li>
-              <li class="active">
-                <a href="#">2 <span class="sr-only">(current)</span></a>
-              </li>
-              <li><a href="#">3</a></li>
-              <li><a href="#">4</a></li>
-              <li><a href="#">5</a></li>
-              <li><a href="#">»</a></li>
-            </ul>
-          </div>
+            <p class="card-text text-center">
+                Start date: {{nj.startDate.substring(0,10)}} <br>
+                <input disabled type="checkbox" id="done">
+                <label for="done"> Done</label>
+              </p>
+             
+           </div>
         </div>
       </div>
     </div>

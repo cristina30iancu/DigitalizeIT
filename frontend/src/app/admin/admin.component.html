@@ -9,7 +9,7 @@
             src="//ssl.gstatic.com/accounts/ui/avatar_2x.png"
             class="profile-img-card"
           />
-            <form #loginForm="ngForm">
+            <form #addForm="ngForm"(ngSubmit)="submit(addForm)">
                 <input type="text"
                 ngModel
                 name="lastName"
@@ -24,9 +24,11 @@
                 placeholder="Enter first name"
                 class="form-control mb-3"
                 >
-                <select ngModel class="form-control mb-3" id="position" name="position">
-                    <option>Tech</option>
-                </select>
+                <select name="position" id="position"  class="form-control mb-3">
+                    <option *ngFor="let position of positions" [ngValue]="position.id">
+                      {{position.name}}
+                    </option>
+                  </select>
                 <input type="date"
                 ngModel
                 name="startDate"

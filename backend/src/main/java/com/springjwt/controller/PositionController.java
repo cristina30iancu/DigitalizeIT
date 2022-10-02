@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
+@CrossOrigin(value = "*",maxAge = 10000)
 @RequiredArgsConstructor
 @RequestMapping("/position")
 public class PositionController {

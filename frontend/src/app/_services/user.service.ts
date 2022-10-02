@@ -35,10 +35,8 @@ export class UserService {
   }
 
   public roleMatch(allowedRoles): boolean {
-    console.log(allowedRoles)
-    let isMatch = false;
+   let isMatch = false;
     const userRoles: any = this.userAuthService.getRoles();
-console.log(userRoles)
     if (userRoles != null && userRoles) {
       if (userRoles === allowedRoles) {
             isMatch = true;
