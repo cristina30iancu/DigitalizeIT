@@ -1,7 +1,9 @@
 package com.springjwt.controller;
 
 import com.springjwt.models.NewJoiner;
+import com.springjwt.repository.NewJoinerRepository;
 import com.springjwt.service.NewJoinerService;
+import com.springjwt.service.PositionService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
@@ -29,7 +31,7 @@ public class NewJoinerController {
         return newJoinerService.findUsersByProject(title);
     }
 
-    @PostMapping("users/add")
+    @PostMapping
     @PreAuthorize("hasRole('ROLE_MANAGER')")
     public NewJoiner saveNewJoiner(@RequestBody NewJoiner newJoiner) {
         return newJoinerService.saveNewJoiner(newJoiner);
