@@ -24,8 +24,8 @@ public class NewJoinerService {
     private final UserService userService;
 
     public NewJoiner saveNewJoiner(NewJoiner newJoiner) {
-        JwtUser current = getCurrentUser();
-        current.addNewJoiner(newJoiner);
+        JwtUser manager = getCurrentUser();
+        manager.addNewJoiner(newJoiner);
         return newJoinerRepository.save(newJoiner);
     }
     public NewJoiner findAllByName(String first, String last) {

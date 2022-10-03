@@ -25,6 +25,9 @@
             <input type="submit"
             value="Login"
             class="btn btn-outline-primary form-control rounded-0">
+            <div *ngIf="errors" class="alert alert-danger text-center mt-3" role="alert">
+                Username or Password incorrect!
+              </div>
         </form>
     </div>
 </div>

@@ -10,21 +10,22 @@ import { UserService } from '../_services/user.service';
   styleUrls: ['./login.component.css'],
 })
 export class LoginComponent implements OnInit {
+  errors!: Boolean
   constructor(
     private userService: UserService,
     private userAuthService: UserAuthService,
     private router: Router
   ) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {  this.errors = false}
 
   login(loginForm: NgForm) {
     this.userService.login(loginForm.value).subscribe(
       (response: any) => {
-        console.log(response)
+        console.log(response);
+        this.errors = false;
         this.userAuthService.setRoles(response.user.role);
         this.userAuthService.setToken(response.token);
-
         const role = response.user.role;
         if (role === 'ROLE_MANAGER') {
           this.router.navigate(['/admin']);
@@ -33,6 +34,7 @@ export class LoginComponent implements OnInit {
         }
       },
       (error) => {
+        this.errors = true;
         console.log(error);
       }
     );
