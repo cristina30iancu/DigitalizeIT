@@ -12,6 +12,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.Customizer;
+import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.http.SessionCreationPolicy;
@@ -25,7 +26,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 @Configuration
-@EnableWebSecurity
+@EnableGlobalMethodSecurity(prePostEnabled = true)
 public class SecurityJwt {
     @Autowired
     private AuthenticationManager authenticationManager;
@@ -48,9 +49,10 @@ public class SecurityJwt {
                 .disable()
                 .authorizeHttpRequests((auth) -> {
                     try {
-                        auth
-                                .antMatchers("/manager/**").hasRole("ROLE_MANAGER")
+                        auth.antMatchers("/manager/**").hasRole("ROLE_MANAGER")
                                 .antMatchers("/it_support/**").hasRole("ROLE_IT_SUPPORT")
+                                .antMatchers("/manager").hasRole("ROLE_MANAGER")
+                                .antMatchers("/it_support").hasRole("ROLE_IT_SUPPORT")
                                 .anyRequest().permitAll()
                                 .and()
                                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)

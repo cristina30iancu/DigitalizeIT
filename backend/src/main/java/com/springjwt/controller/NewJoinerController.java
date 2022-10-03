@@ -5,6 +5,7 @@ import com.springjwt.repository.NewJoinerRepository;
 import com.springjwt.service.NewJoinerService;
 import com.springjwt.service.PositionService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -28,5 +29,16 @@ public class NewJoinerController {
     @GetMapping("projects/{title}")
     public List<NewJoiner> findByProject(@PathVariable String title) {
         return newJoinerService.findUsersByProject(title);
+    }
+
+    @PostMapping
+    @PreAuthorize("hasRole('ROLE_MANAGER')")
+    public NewJoiner saveNewJoiner(@RequestBody NewJoiner newJoiner) {
+        return newJoinerService.saveNewJoiner(newJoiner);
+    }
+
+    @GetMapping
+    public List<NewJoiner> getNewJoinerListByRole() {
+        return newJoinerService.getNewJoinerListByRole();
     }
 }

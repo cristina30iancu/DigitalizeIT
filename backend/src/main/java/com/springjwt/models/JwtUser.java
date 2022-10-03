@@ -9,10 +9,7 @@ import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
-import java.util.Collection;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 @Entity
 @Data
@@ -56,8 +53,11 @@ public class JwtUser implements UserDetails {
   private Set<ERole> userType = new HashSet<>();
 
   @ManyToMany
-  private List<NewJoiner> newJoiners;
+  private List<NewJoiner> newJoiners = new ArrayList<>();
 
+  public void addNewJoiner(NewJoiner newJoiner){
+    this.newJoiners.add(newJoiner);
+  }
   @Override
   public Collection<? extends GrantedAuthority> getAuthorities() {
     Set<GrantedAuthority> authorities = new HashSet<>();
