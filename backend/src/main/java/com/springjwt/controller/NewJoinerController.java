@@ -1,6 +1,7 @@
 package com.springjwt.controller;
 
 import com.springjwt.models.NewJoiner;
+import com.springjwt.repository.NewJoinerRepository;
 import com.springjwt.service.NewJoinerService;
 import com.springjwt.service.PositionService;
 import lombok.RequiredArgsConstructor;
@@ -10,17 +11,22 @@ import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/newJoiner")
+@RequestMapping("newJoiner")
 public class NewJoinerController {
     private final NewJoinerService newJoinerService;
 
-    @PostMapping
-    public NewJoiner saveNewJoiner(@RequestBody NewJoiner newJoiner) {
-        return newJoinerService.saveNewJoiner(newJoiner);
+    @GetMapping("users/all")
+    public List<NewJoiner> findAll() {
+        return newJoinerService.getAllNewJoiners();
     }
 
-    @GetMapping
-    public List<NewJoiner> getNewJoinerListByRole() {
-        return newJoinerService.getNewJoinerListByRole();
+    @GetMapping("users/{user}")
+    public NewJoiner findByName(@RequestBody @PathVariable NewJoinerForm user) {
+        return newJoinerService.findAllByName(user.getFirstName(), user.getLastName());
+    }
+
+    @GetMapping("projects/{title}")
+    public List<NewJoiner> findByProject(@PathVariable String title) {
+        return newJoinerService.findUsersByProject(title);
     }
 }
