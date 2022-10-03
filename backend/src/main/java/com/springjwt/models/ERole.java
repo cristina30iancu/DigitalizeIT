@@ -1,6 +1,6 @@
 package com.springjwt.models;
 
 public enum ERole {
-  MANAGER,
-  IT_SUPPORT
+  ROLE_MANAGER,
+  ROLE_IT_SUPPORT
 }

@@ -1,28 +1,49 @@
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
-
-const API_URL = 'http://localhost:8080/api/test/';
+import { UserAuthService } from './user-auth.service';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class UserService {
-  constructor(private http: HttpClient) { }
+  PATH_OF_API = 'http://localhost:8085';
 
-  getPublicContent(): Observable<any> {
-    return this.http.get(API_URL + 'all', { responseType: 'text' });
+  requestHeader = new HttpHeaders({ 'Content-Type': 'application/json' })
+
+  constructor(
+    private httpclient: HttpClient,
+    private userAuthService: UserAuthService
+  ) {}
+
+  public login(loginData) {
+    return this.httpclient.post(this.PATH_OF_API + '/login', loginData, {
+      headers: this.requestHeader,
+    });
   }
 
-  getUserBoard(): Observable<any> {
-    return this.http.get(API_URL + 'user', { responseType: 'text' });
+  public forUser() {
+    return this.httpclient.get(this.PATH_OF_API + '/forUser', {
+      responseType: 'text',
+    });
   }
 
-  getModeratorBoard(): Observable<any> {
-    return this.http.get(API_URL + 'mod', { responseType: 'text' });
+
+  public forAdmin() {
+    return this.httpclient.get(this.PATH_OF_API + '/forAdmin', {
+      responseType: 'text',
+    });
   }
 
-  getAdminBoard(): Observable<any> {
-    return this.http.get(API_URL + 'admin', { responseType: 'text' });
+  public roleMatch(allowedRoles): boolean {
+   let isMatch = false;
+    const userRoles: any = this.userAuthService.getRoles();
+    if (userRoles != null && userRoles) {
+      if (userRoles === allowedRoles) {
+            isMatch = true;
+            return isMatch;
+          } else {
+            return isMatch;
+          }
+    }
   }
 }

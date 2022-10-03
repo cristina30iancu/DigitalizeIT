@@ -5,6 +5,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+
 import java.util.Date;
 import java.util.List;
 
@@ -15,19 +17,24 @@ import java.util.List;
 public class NewJoiner {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private Long id;
 
+    @NotNull
     private String lastName;
+    @NotNull
     private String firstName;
 
     @ManyToOne
     private Position position;
 
+    @NotNull
     private Date startDate;
+    @NotNull
     private String project;
+    @NotNull
     private Boolean done;
 
     @ManyToMany
-    private List<User> users;
+    private List<JwtUser> jwtUsers;
 
 }
