@@ -20,7 +20,6 @@ public class NewJoinerService {
         return newJoinerRepository.findAllByFirstNameAndLastName(first, last);
     }
 
-
     public List<NewJoiner> getAllNewJoiners() {
         return newJoinerRepository.findAll();
     }

@@ -9,13 +9,12 @@ import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("manager")
+@RequestMapping("/manager")
 public class ManagerController {
     private final NewJoinerService newJoinerService;
 
-    @PostMapping("newJoiner/users/add")
+    @PostMapping("/newJoiner/users/add")
     public NewJoiner saveNewJoiner(@RequestBody NewJoiner newJoiner) {
         return newJoinerService.save(newJoiner);
     }
 }
-

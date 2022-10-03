@@ -49,8 +49,8 @@ public class SecurityJwt {
                 .authorizeHttpRequests((auth) -> {
                     try {
                         auth
-                                .antMatchers("/manager").hasRole("MANAGER")
-                                .antMatchers("/it_support").hasRole("IT_SUPPORT")
+                                .antMatchers("/manager/**").hasRole("ROLE_MANAGER")
+                                .antMatchers("/it_support/**").hasRole("ROLE_IT_SUPPORT")
                                 .anyRequest().permitAll()
                                 .and()
                                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
