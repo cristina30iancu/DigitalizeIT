@@ -15,6 +15,7 @@ import { AuthGuard } from './_auth/auth.guard';
 import { AuthInterceptor } from './_auth/auth.interceptor';
 import { UserService } from './_services/user.service';
 import { ListNjComponent } from './list-nj/list-nj.component';
+import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,7 @@ import { ListNjComponent } from './list-nj/list-nj.component';
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule,
+    HttpClientModule, 
     RouterModule
   ],
   providers: [
@@ -40,7 +41,7 @@ import { ListNjComponent } from './list-nj/list-nj.component';
       provide: HTTP_INTERCEPTORS,
       useClass:AuthInterceptor,
       multi:true
-    },
+    },{provide: LocationStrategy, useClass: HashLocationStrategy},
     UserService
   ],
   bootstrap: [AppComponent]

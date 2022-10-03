@@ -13,12 +13,17 @@ export class NjserviceService {
 
   public getPositions(){
     return this.httpclient.get(this.PATH_OF_API+ '/position', {
-      headers: this.requestHeader,
+      headers: this.requestHeader
     });
   }
   public getNewJoiners(){
     return this.httpclient.get(this.PATH_OF_API+ '/newJoiner', {
-      headers: this.requestHeader,
+      headers: this.requestHeader
     });
+  }
+  public addNewJoiner(){
+    return this.httpclient.post(this.PATH_OF_API+'/manager/newJoiner/users/add', {
+      headers: this.requestHeader
+    })
   }
 }
