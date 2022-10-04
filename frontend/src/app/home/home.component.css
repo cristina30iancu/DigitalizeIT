@@ -1,0 +1,45 @@
+body {
+  background-image: url('background.jpg');
+}
+
+.title {
+  text-align: center;
+  font-weight: bold;
+  font-size: 25px;
+  color: azure;
+  position: relative;
+  animation-name: title;
+  animation-duration: 4s;
+  animation-direction: alternate;
+}
+
+@keyframes title {
+  0% {
+    top: -100px;
+  }
+
+  100% {
+    top: 0px;
+  }
+}
+
+.description {
+  position: absolute;
+  text-align: center;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: azure;
+  animation-name: description;
+  animation-duration: 4s;
+}
+
+@keyframes description {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
