@@ -1,7 +1,7 @@
 package com.springjwt.security;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.springjwt.exception.LogInEx;
+
 import com.springjwt.security.domain.LoginCredentials;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
