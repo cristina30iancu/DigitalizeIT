@@ -1,5 +1,6 @@
 package com.springjwt.controller;
 
+import com.springjwt.models.Equipment;
 import com.springjwt.models.NewJoiner;
 import com.springjwt.service.NewJoinerService;
 import lombok.RequiredArgsConstructor;
@@ -38,5 +39,10 @@ public class NewJoinerController {
     @GetMapping
     public List<NewJoiner> getNewJoinerListByRole() {
         return newJoinerService.getNewJoinerListByRole();
+    }
+
+    @GetMapping("equipment/{id}")
+    public List<Equipment> equipmentForUser(@PathVariable Long id){
+        return newJoinerService.equipmentForUser(id);
     }
 }
