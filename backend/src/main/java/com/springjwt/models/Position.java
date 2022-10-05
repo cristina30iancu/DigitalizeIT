@@ -1,28 +1,12 @@
 package com.springjwt.models;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-
-import javax.persistence.*;
-import javax.validation.constraints.NotNull;
-import java.util.List;
-
-@Entity
-@Data
-@NoArgsConstructor
-@AllArgsConstructor
-public class Position {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-
-    @NotNull
-    private String name;
-
-    @OneToMany
-    private List<NewJoiner> newJoiners;
-
-    @ManyToMany
-    private List<Equipment> equipment;
+public enum Position {
+    BACK_DEV,
+    FRONT_DEV,
+    FULL_STACK,
+    DEVOPS,
+    DATA_ANALYST,
+    BUSINESS_ANALYST,
+    CALL_CENTER,
+    HR
 }

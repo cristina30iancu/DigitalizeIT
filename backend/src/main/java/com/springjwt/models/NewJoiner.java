@@ -24,17 +24,19 @@ public class NewJoiner {
     @NotNull
     private String firstName;
 
-    @ManyToOne
-    private Position position;
-
     @NotNull
     private Date startDate;
     @NotNull
     private String project;
     @NotNull
     private Boolean done;
+    @NotNull
+    private Position position;
 
     @ManyToMany
     private List<JwtUser> jwtUsers;
+
+    @ManyToMany
+    private List<Equipment> equipments;
 
 }

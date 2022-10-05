@@ -6,7 +6,9 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @Data
@@ -24,6 +26,11 @@ public class Equipment {
     @NotNull
     private Integer quantity;
 
+
+    @Enumerated(EnumType.STRING)
+    @ElementCollection(fetch = FetchType.EAGER)
+    private Set<Position> position = new HashSet<>();
+
     @ManyToMany
-    private List<Position> position;
+    private List<NewJoiner> newJoiners;
 }

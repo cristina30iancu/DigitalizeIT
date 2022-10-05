@@ -1,9 +1,7 @@
 package com.springjwt.controller;
 
 import com.springjwt.models.NewJoiner;
-import com.springjwt.repository.NewJoinerRepository;
 import com.springjwt.service.NewJoinerService;
-import com.springjwt.service.PositionService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;

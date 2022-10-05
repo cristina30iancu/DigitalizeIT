@@ -1,6 +1,7 @@
 package com.springjwt.security;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+
 import com.springjwt.security.domain.LoginCredentials;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -29,9 +30,10 @@ public class JsonObjectAuthenticationFilter extends UsernamePasswordAuthenticati
                     authRequest.getEmail(), authRequest.getPassword()
             );
             setDetails(request, token);
+
             return this.getAuthenticationManager().authenticate(token);
         } catch (IOException e) {
-            throw new RuntimeException(e);
+            throw new RuntimeException();
         }
     }
 
