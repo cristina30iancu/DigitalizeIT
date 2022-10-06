@@ -15,13 +15,13 @@ import java.util.List;
 public class NewJoinerController {
     private final NewJoinerService newJoinerService;
 
-    @GetMapping("users/all")
+    @GetMapping("all")
     public List<NewJoiner> findAll() {
         return newJoinerService.getAllNewJoiners();
     }
 
-    @GetMapping("users/{user}")
-    public NewJoiner findByName(@RequestBody @PathVariable NewJoinerForm user) {
+    @GetMapping("getByName")
+    public NewJoiner findByName(@RequestBody NewJoinerForm user) {
         return newJoinerService.findAllByName(user.getFirstName(), user.getLastName());
     }
 
@@ -41,12 +41,12 @@ public class NewJoinerController {
         return newJoinerService.getNewJoinerListByRole();
     }
 
-    @GetMapping("equipment/{id}")
-    public List<Equipment> equipmentForUser(@PathVariable Long id){
-        return newJoinerService.equipmentForUser(id);
+    @GetMapping("equipment/{userId}")
+    public List<Equipment> equipmentForUser(@PathVariable Long userId){
+        return newJoinerService.equipmentForUser(userId);
     }
 
-    @GetMapping("users/startDate")
+    @GetMapping("startDate")
     public List<NewJoiner> getNewJoinerListByStartDate() {
         return newJoinerService.getAllNewJoinersByStartDate();
     }
