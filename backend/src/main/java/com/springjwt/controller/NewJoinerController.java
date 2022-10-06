@@ -30,8 +30,9 @@ public class NewJoinerController {
     }
 
     @PostMapping
-    @PreAuthorize("hasRole('ROLE_MANAGER')")
+//    @PreAuthorize("hasRole('ROLE_MANAGER')")
     public NewJoiner saveNewJoiner(@RequestBody NewJoiner newJoiner) {
+        System.out.println(newJoiner);
         return newJoinerService.saveNewJoiner(newJoiner);
     }
 
