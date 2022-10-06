@@ -21,8 +21,8 @@ export class NjserviceService {
       headers: this.requestHeader
     });
   }
-  public addNewJoiner(){
-    return this.httpclient.post(this.PATH_OF_API+'/manager/newJoiner/users/add', {
+  public addNewJoiner(newJoiner){
+    return this.httpclient.post(this.PATH_OF_API+'/newJoiner', newJoiner, {
       headers: this.requestHeader
     })
   }
