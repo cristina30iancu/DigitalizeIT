@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { NjserviceService } from '../_services/njservice.service';
-import { IPosition} from '../models/iposition';
 
 @Component({
   selector: 'app-admin',
@@ -10,6 +9,9 @@ import { IPosition} from '../models/iposition';
 })
 export class AdminComponent implements OnInit {
   positions : any;
+  errors!: Boolean;
+  message!: string;
+  succes!: Boolean;
   constructor(private njService: NjserviceService) { this.positions = [];}
 
   ngOnInit() {
@@ -17,6 +19,20 @@ export class AdminComponent implements OnInit {
   }
   
   submit(addForm: NgForm){
-
+    console.log(addForm.value)
+    addForm.value.done = 'false';
+    this.njService.addNewJoiner(addForm.value).subscribe(
+      (response: any) => {
+        console.log(response);
+        if(response.id && response.lastName)
+          this.succes = true;
+      },
+      (error) => {
+        this.errors = true;
+        if(error == 400){
+          this.message = 'Please fill in all details!';
+        }
+      }
+    );
   }
 }

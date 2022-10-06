@@ -1,15 +1,14 @@
 package com.springjwt.service;
 
 import com.springjwt.models.ERole;
+import com.springjwt.models.Equipment;
 import com.springjwt.models.JwtUser;
 import com.springjwt.models.NewJoiner;
 import com.springjwt.repository.NewJoinerRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.stereotype.Service;
 
 import java.util.Collection;
 import java.util.Iterator;
@@ -22,6 +21,7 @@ public class NewJoinerService {
     private final NewJoinerRepository newJoinerRepository;
 
     private final UserService userService;
+    private final EquipmentService equipmentService;
 
     public NewJoiner saveNewJoiner(NewJoiner newJoiner) {
         JwtUser manager = getCurrentUser();
@@ -30,6 +30,12 @@ public class NewJoinerService {
     }
     public NewJoiner findAllByName(String first, String last) {
         return newJoinerRepository.findAllByFirstNameAndLastName(first, last);
+    }
+
+    public List<Equipment> equipmentForUser(Long id){
+        NewJoiner joiner = newJoinerRepository.findById(id);
+        return equipmentService.getByPosition(joiner.getPosition());
+
     }
 
     public JwtUser getCurrentUser() {
@@ -63,6 +69,10 @@ public class NewJoinerService {
 
     public List<NewJoiner> findUsersByProject(String projectName) {
         return newJoinerRepository.findNewJoinersByProject(projectName);
+    }
+
+    public List<NewJoiner> getAllNewJoinersByStartDate() {
+        return newJoinerRepository.findAllByOrderByStartDateAsc();
     }
 
 }

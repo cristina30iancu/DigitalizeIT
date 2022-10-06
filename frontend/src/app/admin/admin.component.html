@@ -1,86 +1,100 @@
 <div class="container mt-5">
-    <div class="card text-center">
-        <h1>Add new joiner</h1>
-    </div>
-    <div class="col-md-12">
-        <div class="card card-container">
-            <img
-            id="profile-img"
-            src="//ssl.gstatic.com/accounts/ui/avatar_2x.png"
-            class="profile-img-card"
-          />
-            <form #addForm="ngForm"(ngSubmit)="submit(addForm)">
-              <div class="form-group">
-                <label for="lastName">Last name</label>
-                <div class="input-group mb-2">
-                  <div class="input-group-prepend">
-                    <div class="input-group-text material-icons">face</div>
-                  </div>                           
-                <input type="text"
-                ngModel
-                name="lastName"
-                id="lastName"
-                placeholder="Enter last name"
-                class="form-control mb-3"
-                ></div>
-                <label for="firstName">First name</label>
-                <div class="input-group mb-2">
-                  <div class="input-group-prepend">
-                    <div class="input-group-text material-icons">face</div>
-                  </div>              
-                <input type="text"
-                ngModel
-                name="firstName"
-                id="firstName"
-                placeholder="Enter first name"
-                class="form-control mb-3"
-                >
-              </div> </div>
-              <div class="form-group">
-               <label for="position">Position</label>
-                <div class="input-group mb-2">
-                  <div class="input-group-prepend">
-                    <div class="input-group-text material-icons">badge</div>
-                  </div>
-                <select name="position" id="position"  class="form-control mb-3">
-                    <option *ngFor="let position of positions" [ngValue]="position.id">
-                      {{position.name}}
-                    </option>
-                  </select>
-              </div>
-              </div>
-              <div class="form-group">
-               <label for="startDate">Start date</label>
+  <div class="card text-center">
+      <h1>Add new joiner</h1>
+  </div>
+  <div class="col-md-12">
+      <div class="card card-container">
+          <img
+          id="profile-img"
+          src="//ssl.gstatic.com/accounts/ui/avatar_2x.png"
+          class="profile-img-card"
+        />
+          <form #addForm="ngForm"(ngSubmit)="submit(addForm)">
+            <div class="form-group">
+              <label for="lastName">Last name</label>
               <div class="input-group mb-2">
                 <div class="input-group-prepend">
-                  <div class="input-group-text material-icons">date_range</div>
+                  <div class="input-group-text material-icons">face</div>
+                </div>                           
+              <input type="text"
+              ngModel
+              name="lastName"
+              id="lastName"
+              placeholder="Enter last name"
+              class="form-control mb-3"
+              ></div>
+              <label for="firstName">First name</label>
+              <div class="input-group mb-2">
+                <div class="input-group-prepend">
+                  <div class="input-group-text material-icons">face</div>
+                </div>              
+              <input type="text"
+              ngModel
+              name="firstName"
+              id="firstName"
+              placeholder="Enter first name"
+              class="form-control mb-3"
+              >
+            </div> </div>
+            <div class="form-group">
+             <label for="position">Position</label>
+              <div class="input-group mb-2">
+                <div class="input-group-prepend">
+                  <div class="input-group-text material-icons">badge</div>
                 </div>
-                <input type="date"
-                ngModel
-                name="startDate"
-                id="startDate"
-                style="width: 85%;"
-                >
-              </div>
-              </div>
-              <div class="form-group">
-                <label for="project">Project</label>
-                <div class="input-group mb-2">
-                  <div class="input-group-prepend">
-                    <div class="input-group-text material-icons">storage</div>
-                  </div>
-                  <input type="text"
-                ngModel
-                name="project"
-                id="project"
-                placeholder="Enter project"
-                class="form-control mb-3">    
-              </div>
+              <select ngModel name="position" id="position"  class="form-control mb-3">
+                  <option *ngFor="let position of positions" [ngValue]="position">
+                    {{position}}
+                  </option>
+                </select>
             </div>
-                <input type="submit"
-                value="Add"
-                class="btn btn-outline-primary form-control rounded-0">
-            </form>
-        </div>
-    </div>
+            </div>
+            <div class="form-group">
+              <input type="text"
+          ngModel
+          hidden
+          placeholder="Done"
+          name="done"
+          id="done"
+          [defaultValue]="false"
+          class="form-control mb-3"> 
+             <label for="startDate">Start date</label>
+            <div class="input-group mb-2">
+              <div class="input-group-prepend">
+                <div class="input-group-text material-icons">date_range</div>
+              </div>
+              <input type="date"
+              ngModel
+              name="startDate"
+              id="startDate"
+              style="width: 85%;"
+              >
+            </div>
+            </div>
+            <div class="form-group">
+              <label for="project">Project</label>
+              <div class="input-group mb-2">
+                <div class="input-group-prepend">
+                  <div class="input-group-text material-icons">storage</div>
+                </div>
+                <input type="text"
+              ngModel
+              name="project"
+              id="project"
+              placeholder="Enter project"
+              class="form-control mb-3">    
+            </div>
+          </div>
+              <input type="submit"
+              value="Add"
+              class="btn btn-outline-primary form-control rounded-0">
+              <div *ngIf="errors" class="alert alert-danger text-center mt-3" role="alert">
+                {{message}}
+              </div>
+              <div *ngIf="succes" class="alert alert-succes text-center mt-3" role="alert">
+                New Joiner added!
+              </div>
+          </form>
+      </div>
+  </div>
 </div>

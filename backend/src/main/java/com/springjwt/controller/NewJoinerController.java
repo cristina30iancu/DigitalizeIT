@@ -1,5 +1,6 @@
 package com.springjwt.controller;
 
+import com.springjwt.models.Equipment;
 import com.springjwt.models.NewJoiner;
 import com.springjwt.service.NewJoinerService;
 import lombok.RequiredArgsConstructor;
@@ -14,13 +15,13 @@ import java.util.List;
 public class NewJoinerController {
     private final NewJoinerService newJoinerService;
 
-    @GetMapping("users/all")
+    @GetMapping("all")
     public List<NewJoiner> findAll() {
         return newJoinerService.getAllNewJoiners();
     }
 
-    @GetMapping("users/{user}")
-    public NewJoiner findByName(@RequestBody @PathVariable NewJoinerForm user) {
+    @GetMapping("getByName")
+    public NewJoiner findByName(@RequestBody NewJoinerForm user) {
         return newJoinerService.findAllByName(user.getFirstName(), user.getLastName());
     }
 
@@ -38,5 +39,15 @@ public class NewJoinerController {
     @GetMapping
     public List<NewJoiner> getNewJoinerListByRole() {
         return newJoinerService.getNewJoinerListByRole();
+    }
+
+    @GetMapping("equipment/{userId}")
+    public List<Equipment> equipmentForUser(@PathVariable Long userId){
+        return newJoinerService.equipmentForUser(userId);
+    }
+
+    @GetMapping("startDate")
+    public List<NewJoiner> getNewJoinerListByStartDate() {
+        return newJoinerService.getAllNewJoinersByStartDate();
     }
 }

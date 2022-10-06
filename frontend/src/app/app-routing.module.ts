@@ -10,6 +10,7 @@ import { AuthGuard } from './_auth/auth.guard';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
+  { path: '', component: HomeComponent },
   { path: 'admin', component: AdminComponent, canActivate:[AuthGuard], data:{roles:['ROLE_MANAGER']} },
   { path: 'user', component: UserComponent ,  canActivate:[AuthGuard], data:{roles:['ROLE_IT_SUPPORT']} },
   { path: 'list', component: ListNjComponent},
