@@ -39,4 +39,12 @@ public class NewJoinerController {
     public List<NewJoiner> getNewJoinerListByRole() {
         return newJoinerService.getNewJoinerListByRole();
     }
+
+    @PutMapping("set-done/{newJoinerId}")
+    @PreAuthorize("hasRole('ROLE_IT_SUPPORT')")
+    public void setAsDone(@PathVariable Long newJoinerId){
+        System.out.println(newJoinerService.getUserByLast("Andrei"));
+        newJoinerService.setAsDone(newJoinerId);
+        System.out.println(newJoinerService.getUserByLast("Andrei"));
+    }
 }

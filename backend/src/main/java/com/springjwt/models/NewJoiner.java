@@ -39,4 +39,7 @@ public class NewJoiner {
     @ManyToMany
     private List<Equipment> equipments;
 
+    public void setDone(Boolean done) {
+        this.done = done;
+    }
 }

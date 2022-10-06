@@ -65,4 +65,8 @@ public class NewJoinerService {
         return newJoinerRepository.findNewJoinersByProject(projectName);
     }
 
+    public void setAsDone(Long newJoinerId){
+        newJoinerRepository.findById(newJoinerId).get().setDone(true);
+    }
+
 }
