@@ -71,4 +71,8 @@ public class NewJoinerService {
         return newJoinerRepository.findNewJoinersByProject(projectName);
     }
 
+    public List<NewJoiner> getAllNewJoinersByStartDate() {
+        return newJoinerRepository.findAllByOrderByStartDateAsc();
+    }
+
 }

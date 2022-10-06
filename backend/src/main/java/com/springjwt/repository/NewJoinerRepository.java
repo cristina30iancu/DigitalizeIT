@@ -14,5 +14,9 @@ public interface NewJoinerRepository extends JpaRepository<NewJoiner, Integer> {
     List<NewJoiner> findAllByLastName(@NotNull String lastName);
     List<NewJoiner> findNewJoinersByProject(@NotNull String project);
 
+    List<NewJoiner> findAllByOrderByStartDateAsc();
+
     NewJoiner findById(Long id);
+
+
 }

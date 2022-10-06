@@ -45,4 +45,9 @@ public class NewJoinerController {
     public List<Equipment> equipmentForUser(@PathVariable Long id){
         return newJoinerService.equipmentForUser(id);
     }
+
+    @GetMapping("users/startDate")
+    public List<NewJoiner> getNewJoinerListByStartDate() {
+        return newJoinerService.getAllNewJoinersByStartDate();
+    }
 }
