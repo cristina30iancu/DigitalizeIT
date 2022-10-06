@@ -31,6 +31,7 @@ public class Equipment {
     @ElementCollection(fetch = FetchType.EAGER)
     private Set<Position> position = new HashSet<>();
 
-    @ManyToMany
-    private List<NewJoiner> newJoiners;
+    @OneToMany
+    private List<Equipment_newJoiner> equipment_newJoiner;
+
 }
