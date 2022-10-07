@@ -16,6 +16,7 @@ import { AuthInterceptor } from './_auth/auth.interceptor';
 import { UserService } from './_services/user.service';
 import { ListNjComponent } from './list-nj/list-nj.component';
 import { HashLocationStrategy, LocationStrategy } from '@angular/common';
+import { NjDetailsComponent } from './nj-details/nj-details.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { HashLocationStrategy, LocationStrategy } from '@angular/common';
     LoginComponent,
     HeaderComponent,
     ForbiddenComponent,
-    ListNjComponent
+    ListNjComponent,
+    NjDetailsComponent
   ],
   imports: [
     BrowserModule,

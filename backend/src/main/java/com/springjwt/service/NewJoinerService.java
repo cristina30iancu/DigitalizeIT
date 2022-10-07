@@ -23,6 +23,9 @@ public class NewJoinerService {
     private final UserService userService;
     private final EquipmentService equipmentService;
 
+    public NewJoiner getById(Long id) {
+        return newJoinerRepository.findById(id);
+    }
     public NewJoiner saveNewJoiner(NewJoiner newJoiner) {
         JwtUser manager = getCurrentUser();
         manager.addNewJoiner(newJoiner);

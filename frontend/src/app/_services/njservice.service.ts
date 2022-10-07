@@ -16,8 +16,18 @@ export class NjserviceService {
       headers: this.requestHeader
     });
   }
+  public getEquipments(position){
+    return this.httpclient.get(this.PATH_OF_API+ '/equipment/'+position, {
+      headers: this.requestHeader
+    });
+  }
   public getNewJoiners(){
     return this.httpclient.get(this.PATH_OF_API+ '/newJoiner', {
+      headers: this.requestHeader
+    });
+  }
+  public getNewJoinerById(id){
+    return this.httpclient.get(this.PATH_OF_API+ '/newJoiner/'+id, {
       headers: this.requestHeader
     });
   }

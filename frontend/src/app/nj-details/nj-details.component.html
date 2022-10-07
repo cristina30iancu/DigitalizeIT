@@ -1,0 +1,38 @@
+<!-- <div class="card shadow-lg rounded-9 big-card" style="width: 96vw; margin: 2vw;"> -->
+      <div class="row p-4" style="display: flex; justify-content: space-between;">
+        <div class="col-6 card shadow-sm mt-3" 
+          style="height: fit-content; margin: 0.5em; padding: 0 !important;">
+           <div class="card-body">
+                    <h5 class="card-title text-center mt-3">{{newJoiner.lastName}} {{newJoiner.firstName}}</h5>
+            <p class="card-text text-center">
+              Project: {{newJoiner.project}}
+            </p>
+            <p class="card-text text-center">
+                Start date: {{newJoiner.startDate.substring(0,10)}} <br>
+                <input class="form-check-input" disabled type="checkbox" id="done">
+                <label class="form-check-label mb-3" for="done"> Done</label>
+              </p>      
+              <hr>
+              <div style="height: 60vh;">
+                <h2 class="text-center mt-4">Drag equipments here</h2>
+            </div>
+           </div>
+        </div>
+        <div class="col-5 card shadow-sm mt-3" 
+        style="height: fit-content;margin: 0.5em; padding: 0 !important;" >
+         <div class="card-body" draggable="true" ondrag="dragItem(event)" *ngFor="let eq of equipments">
+            <hr style="margin-top: -0.7em;"> 
+                  <h5 class="card-title text-center">{{eq.name}}</h5>
+          <p class="card-text text-center">
+            Specifications: {{eq.specifications}} 
+          </p>
+          <p class="card-text text-center">
+             
+            </p> 
+         </div>
+       
+      </div>
+      <hr>
+
+      </div>
+    <!-- </div> -->
