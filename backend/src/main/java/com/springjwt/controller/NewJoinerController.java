@@ -2,8 +2,11 @@ package com.springjwt.controller;
 
 import com.springjwt.models.Equipment;
 import com.springjwt.models.NewJoiner;
+import com.springjwt.service.EmailSenderService;
 import com.springjwt.service.NewJoinerService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.boot.context.event.ApplicationReadyEvent;
+import org.springframework.context.event.EventListener;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
@@ -14,6 +17,7 @@ import java.util.List;
 @RequestMapping("newJoiner")
 public class NewJoinerController {
     private final NewJoinerService newJoinerService;
+    private final EmailSenderService emailSenderService;
 
     @GetMapping("all")
     public List<NewJoiner> findAll() {
@@ -33,6 +37,7 @@ public class NewJoinerController {
     @PostMapping
     @PreAuthorize("hasRole('ROLE_MANAGER')")
     public NewJoiner saveNewJoiner(@RequestBody NewJoiner newJoiner) {
+        emailSenderService.sendEmail("alexandru_zugravu@yahoo.com","This is subject", "This is body");
         return newJoinerService.saveNewJoiner(newJoiner);
     }
 
