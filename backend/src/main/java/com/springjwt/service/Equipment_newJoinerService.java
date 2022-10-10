@@ -10,6 +10,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 @Service
@@ -30,10 +31,23 @@ public class Equipment_newJoinerService {
             toReturn.add(equipment_newJoiner);
             equipment_newJoinerRepository.save(equipment_newJoiner);
         }
+
         return toReturn;
     }
 
     public List<Equipment_newJoiner> getAll() {
         return equipment_newJoinerRepository.findAll();
+    }
+
+    public void updateDone(Equipment_newJoiner equipment_newJoiner){
+        equipment_newJoiner.setDone(true);
+        NewJoiner newJoiner = equipment_newJoiner.getNewJoiner();
+        List<Equipment_newJoiner> e = new ArrayList<>();
+        e.addAll((Collection<? extends Equipment_newJoiner>) newJoiner.getEquipment_newJoiners().stream().filter(eq -> eq.isDone() == false));
+        if(e.isEmpty()){
+            newJoiner.setDone(true);
+        }
+
+        equipment_newJoinerRepository.save(equipment_newJoiner);
     }
 }

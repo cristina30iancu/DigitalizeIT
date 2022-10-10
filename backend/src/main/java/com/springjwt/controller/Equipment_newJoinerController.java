@@ -41,4 +41,9 @@ public class Equipment_newJoinerController {
                         map(en -> en.getEquipment()).collect(Collectors.toList());
         return toReturn;
     }
+
+    @PutMapping()
+    public void updateDone(Equipment_newJoiner equipment_newJoiner){
+        equipment_newJoinerService.updateDone(equipment_newJoiner);
+    }
 }
