@@ -36,7 +36,9 @@ public class NewJoiner {
     @ManyToMany
     private List<JwtUser> jwtUsers;
 
-    @ManyToMany
-    private List<Equipment> equipments;
+    @OneToMany
+    private List<Equipment_newJoiner> equipment_newJoiners;
+
+
 
 }

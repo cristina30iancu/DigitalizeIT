@@ -41,5 +41,18 @@ public class InitUsers implements CommandLineRunner {
 //                    .build());
 //            userService.save(u);
 //        }
+//        if (userService.findUserByEmail("ionescu@gmail.com").isEmpty()) {
+//            JwtUser u = userService.save(JwtUser.builder()
+//                    .id(null)
+//                    .lastName("Ionescu")
+//                    .firstName("Anghel")
+//                    .email("ionescu@gmail.com")
+//                    .password(passwordEncoder.encode("123456"))
+//                    .username("ionescu")
+//                    .userType(Set.of(ERole.ROLE_MANAGER))
+//                    .build());
+//            userService.save(u);
+//        }
+//
     }
 }
