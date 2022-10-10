@@ -4,9 +4,11 @@ import com.springjwt.models.JwtUser;
 import com.springjwt.repository.UserRepository;
 import io.jsonwebtoken.Jwt;
 import lombok.RequiredArgsConstructor;
+import org.apache.catalina.User;
 import org.springframework.stereotype.Service;
 
 import javax.persistence.EntityNotFoundException;
+import javax.validation.constraints.Email;
 import java.util.List;
 import java.util.Optional;
 
@@ -42,4 +44,9 @@ public class UserService {
     }
 
     public void deleteUserById(Long userId){userRepository.deleteById(userId);}
+    public JwtUser updateEmail(Long userId, String newEmail){
+        JwtUser jwtUser = userRepository.findById(userId).get();
+        jwtUser.setEmail(newEmail);
+        return userRepository.save(jwtUser);
+    }
 }

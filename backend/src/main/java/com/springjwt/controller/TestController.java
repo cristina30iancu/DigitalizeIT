@@ -32,10 +32,10 @@ public class TestController {
 
     @GetMapping("/users")
     public List<JwtUser> getAllUsers(){return userService.getAllUsers();}
-
+    /*
     @DeleteMapping("/delete/{userId}")
     public void deleteUser(@PathVariable("userId") Long id){
        userService.deleteUserById(id);
     }
-
+    */
 }
