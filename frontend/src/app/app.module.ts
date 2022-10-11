@@ -17,7 +17,8 @@ import { UserService } from './_services/user.service';
 import { ListNjComponent } from './list-nj/list-nj.component';
 import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 import { NjDetailsComponent } from './nj-details/nj-details.component';
-
+import { DragDropModule } from '@angular/cdk/drag-drop';
+import {ScrollingModule} from '@angular/cdk/scrolling';
 @NgModule({
   declarations: [
     AppComponent,
@@ -32,10 +33,11 @@ import { NjDetailsComponent } from './nj-details/nj-details.component';
   ],
   imports: [
     BrowserModule,
+    DragDropModule,
     AppRoutingModule,
     FormsModule,
     HttpClientModule, 
-    RouterModule
+    RouterModule, ScrollingModule
   ],
   providers: [
     AuthGuard,
