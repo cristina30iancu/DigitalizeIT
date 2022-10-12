@@ -28,8 +28,9 @@ public class NewJoiner {
     private Date startDate;
     @NotNull
     private String project;
-    @NotNull
-    private Boolean done;
+
+    private Boolean done = false;
+
     @NotNull
     private Position position;
 

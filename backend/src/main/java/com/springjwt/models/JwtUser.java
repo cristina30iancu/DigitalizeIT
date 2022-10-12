@@ -35,12 +35,12 @@ public class JwtUser implements UserDetails {
   private String firstName;
 
   @NotNull
-  @Size(max = 50)
+  @Size(max = 150)
   @Email
   private String email;
 
   @NotNull
-  @Size(max = 50)
+  @Size(max = 150)
   private String username;
 
   @NotNull

@@ -1,5 +1,6 @@
 package com.springjwt.service;
 
+import com.springjwt.models.ERole;
 import com.springjwt.models.JwtUser;
 import com.springjwt.repository.UserRepository;
 import io.jsonwebtoken.Jwt;
@@ -9,6 +10,7 @@ import org.springframework.stereotype.Service;
 import javax.persistence.EntityNotFoundException;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -39,6 +41,11 @@ public class UserService {
 
     public List<JwtUser> getAllUsers(){
         return userRepository.findAll();
+    }
+    public List<JwtUser> getAllItSupport(){
+        return userRepository.findAll().stream()
+                .filter(x->x.getAuthorities().equals(ERole.ROLE_IT_SUPPORT.name()))
+                .collect(Collectors.toList());
     }
 
     public void deleteUserById(Long userId){userRepository.deleteById(userId);}
