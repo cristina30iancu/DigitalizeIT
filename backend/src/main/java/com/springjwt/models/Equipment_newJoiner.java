@@ -3,6 +3,7 @@ package com.springjwt.models;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.RequiredArgsConstructor;
 
 import javax.persistence.*;
 
@@ -22,5 +23,4 @@ public class Equipment_newJoiner {
 
     @ManyToOne
     private NewJoiner newJoiner;
-
 }
