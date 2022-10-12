@@ -22,8 +22,11 @@ public class Equipment_newJoinerController {
     //private final equipment_service
     @PutMapping("{newJoinerId}")
     //@PreAuthorize("hasRole(ROLE_MANAGER)")
-    public List<Equipment_newJoiner> addEquipment_newJoiner(@RequestBody List<Integer> equipmentIdsList, @PathVariable Long newJoinerId) {
+
+
+    public List<Equipment_newJoiner> addEquipment_newJoiner(@RequestBody List<Long> equipmentIdsList, @PathVariable Long newJoinerId) {
         return equipment_newJoinerService.addEquipment_newJoiner(equipmentIdsList, newJoinerId);
+
     }
     @GetMapping("all")
     //@PreAuthorize("hasRole(ROLE_MANAGER)")
@@ -36,13 +39,20 @@ public class Equipment_newJoinerController {
     public List<Equipment> getEquipmentsOfNewJoiner(@PathVariable Long newJoinerId) {
         List<Equipment_newJoiner> all = equipment_newJoinerService.getAll();
         List<Equipment> toReturn = all.stream().
-                        filter(en -> en.getNewJoiner().getId() == newJoinerId).
-                        map(en -> en.getEquipment()).collect(Collectors.toList());
+                filter(en -> en.getNewJoiner().getId() == newJoinerId).
+                map(en -> en.getEquipment()).collect(Collectors.toList());
         return toReturn;
+    }
+
+    @PutMapping("{idJoiner}/{idEquipment}")
+    @PreAuthorize("hasRole('ROLE_MANAGER')")
+    public void updateDone(@PathVariable Long idJoiner,@PathVariable Long idEquipment){
+        equipment_newJoinerService.updateDone(idEquipment, idJoiner);
     }
 
     @DeleteMapping
     public void deleteAll() {
         equipment_newJoinerService.deleteAll();
+
     }
 }
