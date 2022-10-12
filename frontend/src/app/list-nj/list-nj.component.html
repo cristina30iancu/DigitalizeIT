@@ -1,21 +1,31 @@
-  <div class="card shadow-lg rounded-9 big-card" style="width: 96vw; margin: 2vw;">
+<head>
+  <title>Access denied</title>
+  <link rel="icon" href="icon.jpg">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <link rel="stylesheet" href="list-nj.component.css"/>
+</head>
+
+<div class="big-box">
+  <div id="body" class="card shadow-lg rounded-9 big-card" style="width: 96vw; margin: 2vw;">
     <div class="container">
       <div class="row" style="display: flex; justify-content: center;">
         <div class="col-3 card shadow-sm mt-3"
           style="width: 25rem; height: fit-content; margin: 0 1em 2em 1em; padding: 0 !important;"
           *ngFor="let nj of newJoiners">
-           <div class="card-body">
-                    <h5 class="card-title text-center">{{nj.lastName}} {{nj.firstName}}</h5>
+          <div class="card-body">
+            <h5 class="card-title text-center">{{nj.lastName}} {{nj.firstName}}</h5>
             <p class="card-text text-center">
               Project: {{nj.project}}
             </p>
             <p class="card-text text-center">
-                Start date: {{nj.startDate.substring(0,10)}} <br>
-                <input class="form-check-input" disabled type="checkbox" id="done">
-                <label class="form-check-label" for="done"> Done</label>
-              </p>          
-           </div>
+              Start date: {{nj.startDate.substring(0,10)}} <br>
+              <input class="form-check-input" disabled type="checkbox" id="done">
+              <label class="form-check-label" for="done"> Done</label>
+            </p>
+          </div>
         </div>
       </div>
     </div>
   </div>
+</div>
