@@ -1,9 +1,6 @@
 package com.springjwt.service;
 
-import com.springjwt.models.ERole;
-import com.springjwt.models.Equipment;
-import com.springjwt.models.JwtUser;
-import com.springjwt.models.NewJoiner;
+import com.springjwt.models.*;
 import com.springjwt.repository.NewJoinerRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -49,6 +46,7 @@ public class NewJoinerService {
         Iterator<GrantedAuthority> itr = authorities.iterator();
         GrantedAuthority authority = itr.hasNext()? itr.next() : null;
         List<NewJoiner> allNewJoiners = getAllNewJoiners();
+
         if(authority.getAuthority().equals(ERole.ROLE_IT_SUPPORT.name())) {
             return allNewJoiners.stream().filter(n -> n.getDone() == false).collect(Collectors.toList());
         }
