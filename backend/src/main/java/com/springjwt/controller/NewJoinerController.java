@@ -35,17 +35,17 @@ public class NewJoinerController {
         return newJoinerService.findUsersByProject(title);
     }
 
+    // De Testat ------------------------------------------------------------------------------------------------------------------
     @PostMapping
     @PreAuthorize("hasRole('ROLE_MANAGER')")
     public NewJoiner saveNewJoiner(@RequestBody NewJoiner newJoiner) {
-        List<JwtUser> userList = userService.getAllUsers();
-        for(int i=0;i<=userList.size();i++){
+        List<JwtUser> userList = userService.getAllItSupport();
+        for(int i=0;i<userList.size();i++){
             emailSenderService.sendEmail(userList.get(i).getEmail(),"This is subject", "This is body");
         }
         return newJoinerService.saveNewJoiner(newJoiner);
     }
-
-
+    //  -----------------------------------------------------------------------------------------------------------------------------
 
     @GetMapping
     public List<NewJoiner> getNewJoinerListByRole() {
