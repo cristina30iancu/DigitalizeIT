@@ -3,6 +3,7 @@ package com.springjwt.controller;
 import com.springjwt.models.ERole;
 import com.springjwt.models.JwtUser;
 import com.springjwt.repository.UserRepository;
+import com.springjwt.service.EmailSenderService;
 import com.springjwt.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;
@@ -31,7 +32,9 @@ public class TestController {
     }
 
     @GetMapping("/users")
-    public List<JwtUser> getAllUsers(){return userService.getAllUsers();}
+    public List<JwtUser> getAllUsers(){
+        return userService.getAllUsers();
+    }
 
     @DeleteMapping("/delete/{userId}")
     public void deleteUser(@PathVariable("userId") Long id){
