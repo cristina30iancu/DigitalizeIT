@@ -1,11 +1,16 @@
 package com.springjwt.models;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.RequiredArgsConstructor;
 
 import javax.persistence.*;
 
 @Entity
 @Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class Equipment_newJoiner {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -18,5 +23,4 @@ public class Equipment_newJoiner {
 
     @ManyToOne
     private NewJoiner newJoiner;
-
 }
