@@ -22,8 +22,10 @@ public class Equipment_newJoinerController {
     //private final equipment_service
     @PutMapping("{newJoinerId}")
     //@PreAuthorize("hasRole(ROLE_MANAGER)")
-    public List<Equipment_newJoiner> addEquipment_newJoiner(@RequestBody List<Equipment> equipmentList, @PathVariable Long newJoinerId) {
-        return equipment_newJoinerService.addEquipment_newJoiner(equipmentList, newJoinerId);
+
+
+    public List<Equipment_newJoiner> addEquipment_newJoiner(@RequestBody List<Long> equipmentIdsList, @PathVariable Long newJoinerId) {
+        return equipment_newJoinerService.addEquipment_newJoiner(equipmentIdsList, newJoinerId);
 
     }
     @GetMapping("all")
@@ -46,5 +48,11 @@ public class Equipment_newJoinerController {
     @PreAuthorize("hasRole('ROLE_MANAGER')")
     public void updateDone(@PathVariable Long idJoiner,@PathVariable Long idEquipment){
         equipment_newJoinerService.updateDone(idEquipment, idJoiner);
+    }
+
+    @DeleteMapping
+    public void deleteAll() {
+        equipment_newJoinerService.deleteAll();
+
     }
 }
