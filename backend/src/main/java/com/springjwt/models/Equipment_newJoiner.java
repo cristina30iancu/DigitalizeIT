@@ -19,13 +19,4 @@ public class Equipment_newJoiner {
     @ManyToOne
     private NewJoiner newJoiner;
 
-    public Equipment_newJoiner(boolean done, Equipment equipment, NewJoiner newJoiner) {
-        this.done = done;
-        this.equipment = equipment;
-        this.newJoiner = newJoiner;
-    }
-
-    public Equipment_newJoiner() {
-        this.done = false;
-    }
 }
