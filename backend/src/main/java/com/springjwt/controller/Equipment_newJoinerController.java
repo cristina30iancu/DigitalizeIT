@@ -42,8 +42,9 @@ public class Equipment_newJoinerController {
         return toReturn;
     }
 
-    @PutMapping()
-    public void updateDone(Equipment_newJoiner equipment_newJoiner){
-        equipment_newJoinerService.updateDone(equipment_newJoiner);
+    @PutMapping("{idJoiner}/{idEquipment}")
+    @PreAuthorize("hasRole('ROLE_MANAGER')")
+    public void updateDone(@PathVariable Long idJoiner,@PathVariable Integer idEquipment){
+        equipment_newJoinerService.updateDone(idEquipment, idJoiner);
     }
 }

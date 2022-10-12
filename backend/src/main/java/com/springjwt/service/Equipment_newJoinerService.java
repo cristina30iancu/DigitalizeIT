@@ -39,13 +39,20 @@ public class Equipment_newJoinerService {
         return equipment_newJoinerRepository.findAll();
     }
 
-    public void updateDone(Equipment_newJoiner equipment_newJoiner){
+    public void updateDone(Integer idEquipment, Long idJoiner){
+        Equipment_newJoiner equipment_newJoiner = equipment_newJoinerRepository.findByNewJoinerIdAndAndEquipmentId(idJoiner, idEquipment);
         equipment_newJoiner.setDone(true);
-        NewJoiner newJoiner = equipment_newJoiner.getNewJoiner();
-        List<Equipment_newJoiner> e = new ArrayList<>();
-        e.addAll((Collection<? extends Equipment_newJoiner>) newJoiner.getEquipment_newJoiners().stream().filter(eq -> eq.isDone() == false));
-        if(e.isEmpty()){
+
+        List<Equipment_newJoiner> equipmentNewJoinerList = equipment_newJoinerRepository.findAllByNewJoinerId(idJoiner);
+        List<Equipment_newJoiner> eq = new ArrayList<>();
+        for (Equipment_newJoiner e: equipmentNewJoinerList) {
+            if(e.isDone() == false) eq.add(e);
+        }
+
+        NewJoiner newJoiner = newJoinerRepository.findById(idJoiner);
+        if(eq.isEmpty()){
             newJoiner.setDone(true);
+            newJoinerRepository.save(newJoiner);
         }
 
         equipment_newJoinerRepository.save(equipment_newJoiner);
