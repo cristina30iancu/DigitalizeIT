@@ -38,6 +38,7 @@ public class NewJoinerService {
 
     }
 
+
     public JwtUser getCurrentUser() {
         return userService.getUserByEmail((String)SecurityContextHolder.getContext().getAuthentication().getPrincipal());
     }

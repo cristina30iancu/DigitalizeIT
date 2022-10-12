@@ -11,7 +11,7 @@ public class Equipment_newJoiner {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private boolean done = false;
+    private Boolean done = false;
 
     @ManyToOne
     private Equipment equipment;
