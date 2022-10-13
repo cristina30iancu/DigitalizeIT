@@ -43,7 +43,7 @@ public class Equipment_newJoinerController {
     }
 
     @PutMapping("{idJoiner}/{idEquipment}")
-    @PreAuthorize("hasRole('ROLE_MANAGER')")
+    @PreAuthorize("hasRole('ROLE_IT_SUPPORT')")
     public void updateDone(@PathVariable Long idJoiner,@PathVariable Long idEquipment){
         equipment_newJoinerService.updateDone(idEquipment, idJoiner);
     }
