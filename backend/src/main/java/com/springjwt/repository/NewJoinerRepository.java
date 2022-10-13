@@ -19,4 +19,5 @@ public interface NewJoinerRepository extends JpaRepository<NewJoiner, Integer> {
     NewJoiner findById(Long id);
 
 
+
 }

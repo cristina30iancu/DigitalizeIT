@@ -47,6 +47,8 @@ public class Equipment_newJoinerService {
     }
 
 
+
+
     public void updateDone(Long idEquipment, Long idJoiner){
         Equipment_newJoiner equipment_newJoiner = equipment_newJoinerRepository.findByNewJoinerIdAndAndEquipmentId(idJoiner, idEquipment);
         equipment_newJoiner.setDone(true);
