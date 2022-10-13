@@ -43,9 +43,7 @@ public class UserService {
         return userRepository.findAll();
     }
     public List<JwtUser> getAllItSupport(){
-        return userRepository.findAll().stream()
-                .filter(x->x.getAuthorities().equals(ERole.ROLE_IT_SUPPORT.name()))
-                .collect(Collectors.toList());
+        return userRepository.findAllByUserType(ERole.ROLE_IT_SUPPORT);
     }
 
     public void deleteUserById(Long userId){userRepository.deleteById(userId);}
