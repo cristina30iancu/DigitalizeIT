@@ -5,6 +5,7 @@ import com.springjwt.models.Equipment;
 import com.springjwt.models.JwtUser;
 import com.springjwt.models.NewJoiner;
 import com.springjwt.repository.NewJoinerRepository;
+import com.springjwt.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.security.core.GrantedAuthority;
@@ -19,7 +20,7 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 public class NewJoinerService {
     private final NewJoinerRepository newJoinerRepository;
-
+    private final UserRepository userRepository;
     private final UserService userService;
     private final EquipmentService equipmentService;
 
@@ -37,7 +38,6 @@ public class NewJoinerService {
         return equipmentService.getByPosition(joiner.getPosition());
 
     }
-
 
     public JwtUser getCurrentUser() {
         return userService.getUserByEmail((String)SecurityContextHolder.getContext().getAuthentication().getPrincipal());
@@ -76,4 +76,30 @@ public class NewJoinerService {
         return newJoinerRepository.findAllByOrderByStartDateAsc();
     }
 
+    public NewJoiner getNewJoinerById(Long idNewJoiner){
+        return newJoinerRepository.findById(idNewJoiner);
+    }
+
+    public JwtUser getManager(Long idNewJoiner){
+       List<JwtUser> userList = userRepository.findAllByUserType(ERole.ROLE_MANAGER);
+       int i;
+       int j;
+       boolean ok = false;
+       for(i=0;i<userList.size();i++) {
+           List<NewJoiner> newJoinersList = userList.get(i).getNewJoiners();
+           for (NewJoiner n: newJoinersList) {
+               if(n.getId() == idNewJoiner) {
+                   ok = true;
+                   break;
+               }
+           }
+           if(ok==true)
+               break;
+       }
+       return userList.get(i);
+    }
 }
+
+
+
+
