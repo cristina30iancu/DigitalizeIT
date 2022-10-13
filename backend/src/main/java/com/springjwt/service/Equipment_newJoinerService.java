@@ -62,7 +62,7 @@ public class Equipment_newJoinerService {
         NewJoiner newJoiner = newJoinerRepository.findById(idJoiner);
         if(eq.isEmpty()){
             JwtUser manager = newJoinerService.getManager(idJoiner);
-            emailSenderService.sendEmail(manager.getEmail(),"DigitalizeIT", "A newJoiner is done");
+            emailSenderService.sendEmail(manager.getEmail(),"DigitalizeIT", "A newJoiner is done"); //
             newJoiner.setDone(true);
             newJoinerRepository.save(newJoiner);
         }
