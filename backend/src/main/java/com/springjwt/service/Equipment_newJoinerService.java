@@ -33,7 +33,7 @@ public class Equipment_newJoinerService {
         List<Equipment_newJoiner> toReturn = new ArrayList<>();
 
         for(int i = 0; i < equipmentIdsList.size(); ++i) {
-            Equipment currEquipment = equipmentRepository.findById(equipmentIdsList.get(i));
+            Equipment currEquipment = equipmentRepository.findById(equipmentIdsList.get(i)).get();
             Equipment_newJoiner equipment_newJoiner = new Equipment_newJoiner(null,false, currEquipment, newJoiner);
             toReturn.add(equipment_newJoiner);
             equipment_newJoinerRepository.save(equipment_newJoiner);
