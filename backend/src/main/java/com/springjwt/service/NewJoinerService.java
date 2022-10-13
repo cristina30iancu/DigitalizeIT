@@ -37,7 +37,9 @@ public class NewJoinerService {
         return equipmentService.getByPosition(joiner.getPosition());
 
     }
-
+    public NewJoiner getById(Long id) {
+        return newJoinerRepository.findById(id);
+    }
 
     public JwtUser getCurrentUser() {
         return userService.getUserByEmail((String)SecurityContextHolder.getContext().getAuthentication().getPrincipal());

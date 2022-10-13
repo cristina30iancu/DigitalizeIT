@@ -25,6 +25,10 @@ public class NewJoinerController {
         return newJoinerService.getAllNewJoiners();
     }
 
+    @GetMapping("/{id}")
+    public NewJoiner findById(@PathVariable Long id) {
+        return newJoinerService.getById(id);
+    }
     @GetMapping("getByName")
     public NewJoiner findByName(@RequestBody NewJoinerForm user) {
         return newJoinerService.findAllByName(user.getFirstName(), user.getLastName());

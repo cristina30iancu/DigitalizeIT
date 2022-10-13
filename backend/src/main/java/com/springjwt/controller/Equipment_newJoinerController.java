@@ -22,8 +22,6 @@ public class Equipment_newJoinerController {
     //private final equipment_service
     @PutMapping("{newJoinerId}")
     //@PreAuthorize("hasRole(ROLE_MANAGER)")
-
-
     public List<Equipment_newJoiner> addEquipment_newJoiner(@RequestBody List<Long> equipmentIdsList, @PathVariable Long newJoinerId) {
         return equipment_newJoinerService.addEquipment_newJoiner(equipmentIdsList, newJoinerId);
 

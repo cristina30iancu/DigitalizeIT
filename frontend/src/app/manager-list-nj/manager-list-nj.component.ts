@@ -3,11 +3,11 @@ import { Router } from '@angular/router';
 import { NjserviceService } from '../_services/njservice.service';
 
 @Component({
-  selector: 'app-list-nj',
-  templateUrl: './list-nj.component.html',
-  styleUrls: ['./list-nj.component.css']
+  selector: 'app-manager-list-nj',
+  templateUrl: './manager-list-nj.component.html',
+  styleUrls: ['./manager-list-nj.component.css']
 })
-export class ListNjComponent implements OnInit {
+export class ManagerListNjComponent implements OnInit {
   newJoiners: any;
   constructor(private njService: NjserviceService,private router: Router) { this.newJoiners = [];}
 
@@ -16,6 +16,6 @@ export class ListNjComponent implements OnInit {
   }
   viewNJ(event: any, njId: number): void {
     event.stopPropagation();
-   this.router.navigate(['newJoiner', njId,'it-support']);
+   this.router.navigate(['newJoiner', njId]);
   }
 }

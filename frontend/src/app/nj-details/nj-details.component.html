@@ -1,0 +1,61 @@
+<div class="row p-4" style="display: flex; justify-content: space-between;">
+ 
+  <div class="col-6 card shadow-sm mt-3 text-center" style="justify-content: center; height: fit-content; margin: 0.5em; padding: 0 !important;">
+    <div class="card-body">
+      <h5 class="card-title text-center mt-3">{{newJoiner.lastName}} {{newJoiner.firstName}}</h5>
+      <p class="card-text text-center">
+        Project: {{newJoiner.project}}
+      </p>
+      <p class="card-text text-center"> 
+        Position: {{newJoiner.position}}
+      </p>
+      <p class="card-text text-center">
+        Start date: {{newJoiner.startDate.substring(0,10)}} <br>
+        <input class="form-check-input" disabled type="checkbox" id="done">
+        <label class="form-check-label mb-3" for="done"> Done</label> 
+      
+      </p>
+      <hr>
+      <div style="height: 60vh;">
+        <h2 class="text-center">Drag equipments here</h2>
+        <div cdkDropList #doneList="cdkDropList" [cdkDropListData]="done" [cdkDropListConnectedTo]="[equipmentsList]"
+          class="example-list" (cdkDropListDropped)="drop($event)">
+          <div class="card shadow-sm mt-3 example-box"
+            style="height: fit-content;margin: 0.5em; padding: 0 !important;">
+            <div class="card-body" *ngFor="let eq of done" cdkDrag>
+              <hr style="margin-top: -1.7em;">
+              <h5 class="card-title text-center">{{eq.name}}</h5>
+              <p class="card-text text-center">
+                Specifications: {{eq.specifications}}
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <button (click)="submit()" class="btn btn-primary btn-lg">Submit</button>
+    </div>
+  </div>
+
+  <div class="col-5 card shadow-sm mt-3">
+    <h2 class="text-center m-3">Available equipments</h2>
+    <cdk-virtual-scroll-viewport appendOnly itemSize="70" class="example-viewport">
+       <div cdkDropList #equipmentsList="cdkDropList" [cdkDropListData]="equipments" [cdkDropListConnectedTo]="[doneList]"
+      class="example-list" (cdkDropListDropped)="drop($event)">
+      <div class="card shadow-sm mt-3 example-box" *ngIf="equipments.length > 0"
+        style="height: fit-content;margin: 0.5em; padding: 0 !important;">
+        <div class="card-body" cdkDrag *cdkVirtualFor="let eq of equipments templateCacheSize: 0">
+          <!-- <hr style="margin-top: -1.7em;"> -->
+
+          <div class="input-group-prepend" style="margin-top: -1.7em;">
+            <div class="input-group-text material-icons text-center">devices</div>
+             </div>
+          <h5 class="card-title text-center">{{eq.name}}</h5>
+          <p class="card-text text-center">
+            Specifications: {{eq.specifications}}
+          </p>
+        </div>
+      </div>
+    </div>  
+  </cdk-virtual-scroll-viewport>
+    
+  </div>
