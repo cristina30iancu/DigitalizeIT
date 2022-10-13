@@ -30,7 +30,7 @@ public class Equipment_newJoinerService {
 
         NewJoiner newJoiner = newJoinerRepository.findById(newJoinerID);
 
-        List<Equipment_newJoiner> toReturn = new ArrayList<>();)
+        List<Equipment_newJoiner> toReturn = new ArrayList<>();
 
         for(int i = 0; i < equipmentIdsList.size(); ++i) {
             Equipment currEquipment = equipmentRepository.findById(equipmentIdsList.get(i)).get();

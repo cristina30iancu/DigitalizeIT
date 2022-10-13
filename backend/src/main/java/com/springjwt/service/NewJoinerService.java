@@ -38,7 +38,6 @@ public class NewJoinerService {
 
     }
 
-
     public JwtUser getCurrentUser() {
         return userService.getUserByEmail((String)SecurityContextHolder.getContext().getAuthentication().getPrincipal());
     }
@@ -76,4 +75,21 @@ public class NewJoinerService {
         return newJoinerRepository.findAllByOrderByStartDateAsc();
     }
 
+    public NewJoiner getNewJoinerById(Long idNewJoiner){
+        return newJoinerRepository.findById(idNewJoiner);
+    }
+    public JwtUser getManager(Long idNewJoiner){
+        NewJoiner newJoiner = newJoinerRepository.findById(idNewJoiner);
+        List<JwtUser> userList = newJoiner.getJwtUsers();
+        int i;
+        for(i=0;i<userList.size();i++){
+            if(userList.get(i).getUserType().equals(ERole.ROLE_MANAGER))
+                break;
+        }
+        return userList.get(i);
+    }
 }
+
+
+
+
