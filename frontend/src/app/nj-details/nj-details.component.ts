@@ -12,7 +12,6 @@ export class NjDetailsComponent implements OnInit {
   newJoiner: any;
   equipments: any;
   done = [];
-  lol = ['p'];
 
   constructor(private njService: NjserviceService) { }
 

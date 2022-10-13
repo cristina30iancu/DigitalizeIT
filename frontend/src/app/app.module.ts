@@ -19,6 +19,7 @@ import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 import { NjDetailsComponent } from './nj-details/nj-details.component';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import {ScrollingModule} from '@angular/cdk/scrolling';
+import { HistoryComponent } from './history/history.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -29,7 +30,8 @@ import {ScrollingModule} from '@angular/cdk/scrolling';
     HeaderComponent,
     ForbiddenComponent,
     ListNjComponent,
-    NjDetailsComponent
+    NjDetailsComponent,
+    HistoryComponent
   ],
   imports: [
     BrowserModule,
