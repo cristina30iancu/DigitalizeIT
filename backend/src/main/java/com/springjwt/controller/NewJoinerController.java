@@ -39,10 +39,10 @@ public class NewJoinerController {
     @PostMapping
     @PreAuthorize("hasRole('ROLE_MANAGER')")
     public NewJoiner saveNewJoiner(@RequestBody NewJoiner newJoiner) {
-        /*List<JwtUser> userList = userService.getAllItSupport();
+        List<JwtUser> userList = userService.getAllItSupport();
         for(int i=0;i<userList.size();i++){
             emailSenderService.sendEmail(userList.get(i).getEmail(),"DigitalizeIT", "A new joiner has been added");
-        }*/
+        }
         return newJoinerService.saveNewJoiner(newJoiner);
     }
     //  -----------------------------------------------------------------------------------------------------------------------------

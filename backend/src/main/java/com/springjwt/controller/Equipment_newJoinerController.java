@@ -27,19 +27,19 @@ public class Equipment_newJoinerController {
     private final NewJoinerService newJoinerService;
     //private final equipment_service
     @PutMapping("{newJoinerId}")
-    //@PreAuthorize("hasRole(ROLE_MANAGER)")
+    @PreAuthorize("hasRole(ROLE_MANAGER)")
     public List<Equipment_newJoiner> addEquipment_newJoiner(@RequestBody List<Long> equipmentIdsList, @PathVariable Long newJoinerId) {
         return equipment_newJoinerService.addEquipment_newJoiner(equipmentIdsList, newJoinerId);
 
     }
     @GetMapping("all")
-    //@PreAuthorize("hasRole(ROLE_MANAGER)")
+    @PreAuthorize("hasRole(ROLE_MANAGER)")
     public List<Equipment_newJoiner> getAll() {
         return equipment_newJoinerService.getAll();
     }
 
     @GetMapping("equipmentsOfNewjoiner/{newJoinerId}")
-    //@PreAuthorize("hasRole(ROLE_MANAGER)")
+    @PreAuthorize("hasRole(ROLE_MANAGER)")
     public List<Equipment> getEquipmentsOfNewJoiner(@PathVariable Long newJoinerId) {
         List<Equipment_newJoiner> all = equipment_newJoinerService.getAll();
         List<Equipment> toReturn = all.stream().
@@ -49,11 +49,8 @@ public class Equipment_newJoinerController {
     }
 
     @PutMapping("{idJoiner}/{idEquipment}")
-    @PreAuthorize("hasRole('ROLE_MANAGER')")
+    @PreAuthorize("hasRole('ROLE_IT_SUPPORT')")
     public void updateDone(@PathVariable Long idJoiner,@PathVariable Long idEquipment){
-        NewJoiner newJoiner = newJoinerService.getNewJoinerById(idJoiner);
-        JwtUser manager = newJoinerService.getManager(idJoiner);
-        emailSenderService.sendEmail(manager.getEmail(),"DigitalizeIT", "A newJoiner is done");
         equipment_newJoinerService.updateDone(idEquipment, idJoiner);
     }
 
