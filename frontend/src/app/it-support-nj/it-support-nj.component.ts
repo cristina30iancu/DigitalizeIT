@@ -13,21 +13,20 @@ export class ItSupportNjComponent implements OnInit {
   equipments: any;
   done: any;
   eqListIds = [];
-  // doneList: any;
   constructor(private njService: NjserviceService) { }
 
   async ngOnInit() {
-    this.done = [];
+    // this.done = [];
     const path = window.location.href.split('/');
     const id = parseInt(path[path.length - 2]);
-    await this.njService.getAssignedEquipments(id).subscribe(res => { this.equipments = res; console.log(res) })
+    await this.njService.getAssignedEquipments(id).subscribe(res => { this.equipments = res; })
     if (id > 0) {
       await this.njService.getNewJoinerById(id).subscribe(res => {
         this.newJoiner = res;
-        // this.njService.getEquipments(this.newJoiner.position)
-        //   .subscribe((response) => {
-        //     this.equipments = response;
-        //   });
+        this.njService.getDoneEquipments(id)
+          .subscribe((response) => {
+            this.done = response;
+          });
       });
     } else console.error("id is zero, cannot send request");
   }
@@ -35,7 +34,7 @@ export class ItSupportNjComponent implements OnInit {
     if (event.previousContainer === event.container) {
 
       moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
-
+      console.log('if')
       let newList = this.equipments
       this.equipments = [...newList]
     } else {
@@ -46,15 +45,12 @@ export class ItSupportNjComponent implements OnInit {
         event.currentIndex,
       );
       let newList = this.equipments
-      this.equipments = [...newList]
-    }
+      this.equipments = [...newList] }
   }
   submit() {
-    this.eqListIds = [];
     for (let d of this.done) {
-      this.eqListIds.push(d.id);
+      this.njService.updateEquipments(this.newJoiner.id, d.id).subscribe(res => console.log(res));
     }
-    this.njService.assignEquipment(this.newJoiner.id, this.eqListIds).subscribe(res => console.log(res));
   }
 }
 

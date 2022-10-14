@@ -21,8 +21,8 @@ export class NjserviceService {
       headers: this.requestHeader
     });
   }
-  public getNewJoiners(){
-    return this.httpclient.get(this.PATH_OF_API+ '/newJoiner', {
+  public getNewJoiners(done){
+    return this.httpclient.get(this.PATH_OF_API+ '/newJoiner/done/'+done, {
       headers: this.requestHeader
     });
   }
@@ -43,6 +43,11 @@ export class NjserviceService {
   }
   public getAssignedEquipments(newJoinerId){
     return this.httpclient.get(this.PATH_OF_API+'/equipmentNewJoiner/equipmentsOfNewjoiner/'+newJoinerId, {
+      headers: this.requestHeader
+    })
+  }
+  public getDoneEquipments(newJoinerId){
+    return this.httpclient.get(this.PATH_OF_API+'/equipmentNewJoiner/equipmentsOfNewjoiner/'+newJoinerId+'/done', {
       headers: this.requestHeader
     })
   }

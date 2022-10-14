@@ -1,6 +1,6 @@
 <div class="row p-4" style="display: flex; justify-content: space-between;">
  
-  <div class="col-6 card shadow-sm mt-3 text-center" style="justify-content: center; height: fit-content; margin: 0.5em; padding: 0 !important;">
+  <div class="col-6 card shadow-lg mt-3 text-center" style="justify-content: center; height: fit-content; margin: 0.5em; padding: 0 !important;">
     <div class="card-body">
       <h5 class="card-title text-center mt-3">{{newJoiner.lastName}} {{newJoiner.firstName}}</h5>
       <p class="card-text text-center">
@@ -11,7 +11,7 @@
       </p>
       <p class="card-text text-center">
         Start date: {{newJoiner.startDate.substring(0,10)}} <br>
-        <input class="form-check-input" disabled type="checkbox" id="done">
+        <input class="form-check-input" disabled type="checkbox" id="done"  [checked]="newJoiner!=undefined && newJoiner.done==true">
         <label class="form-check-label mb-3" for="done"> Done</label> 
       
       </p>
@@ -20,7 +20,7 @@
         <h2 class="text-center">Drag equipments here</h2>
         <div cdkDropList #doneList="cdkDropList" [cdkDropListData]="done" [cdkDropListConnectedTo]="[equipmentsList]"
           class="example-list" (cdkDropListDropped)="drop($event)">
-          <div class="card shadow-sm mt-3 example-box"
+          <div class="card shadow-lg mt-3 example-box"
             style="height: fit-content;margin: 0.5em; padding: 0 !important;">
             <div class="card-body" *ngFor="let eq of done" cdkDrag>
               <hr style="margin-top: -1.7em;">
@@ -36,12 +36,12 @@
     </div>
   </div>
 
-  <div class="col-5 card shadow-sm mt-3">
+  <div class="col-5 card shadow-lg mt-3">
     <h2 class="text-center m-3">Available equipments</h2>
     <cdk-virtual-scroll-viewport appendOnly itemSize="70" class="example-viewport">
        <div cdkDropList #equipmentsList="cdkDropList" [cdkDropListData]="equipments" [cdkDropListConnectedTo]="[doneList]"
       class="example-list" (cdkDropListDropped)="drop($event)">
-      <div class="card shadow-sm mt-3 example-box" *ngIf="equipments.length > 0"
+      <div class="card shadow-lg mt-3 example-box" *ngIf="equipments.length > 0"
         style="height: fit-content;margin: 0.5em; padding: 0 !important;">
         <div class="card-body" cdkDrag *cdkVirtualFor="let eq of equipments templateCacheSize: 0">
           <!-- <hr style="margin-top: -1.7em;"> -->

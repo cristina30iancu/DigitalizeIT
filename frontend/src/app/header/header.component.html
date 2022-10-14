@@ -29,8 +29,13 @@
             *ngIf="isLoggedIn()" 
            >History</a>
           </li>
-         
         </ul>
+        <h3 class="nav-item mr-3" style="margin-right:30px; color: white;" aria-current="page" routerLink="#"
+        *ngIf="userService.roleMatch('ROLE_MANAGER')"
+       >Manager page</h3>
+       <h3 class="nav-item mr-3" style="margin-right:30px; color: white;"  aria-current="page" routerLink="#"
+       *ngIf="userService.roleMatch('ROLE_IT_SUPPORT')"
+       >IT Support page</h3>
         <button *ngIf="! isLoggedIn()" type="button" class="btn btn-success" routerLink="/login">Login
           </button>
         <button *ngIf="isLoggedIn()" type="button" class="btn btn-outline-danger" (click)="logout()" >Logout</button>

@@ -8,6 +8,7 @@ import {CdkDragDrop, moveItemInArray, transferArrayItem} from '@angular/cdk/drag
   styleUrls: ['./nj-details.component.css'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
+
 export class NjDetailsComponent implements OnInit {
   newJoiner: any;
   equipments: any;
@@ -24,8 +25,21 @@ export class NjDetailsComponent implements OnInit {
         this.newJoiner = res;
         this.njService.getEquipments(this.newJoiner.position)
         .subscribe((res) => {
-        this.equipments = res;         
-        
+        this.equipments = res;   
+        for(let eqp of this.equipments){
+          const isFound = this.done.some(element => {
+            if (element.id == eqp.id) {
+              return true;
+            }
+            return false;
+          });
+          if(isFound){
+            const indexOfObject = this.equipments.findIndex(object => {
+              return object.id == eqp.id;
+            });
+            this.equipments.splice(indexOfObject, 1);
+          }
+        }    
         });
        
       })

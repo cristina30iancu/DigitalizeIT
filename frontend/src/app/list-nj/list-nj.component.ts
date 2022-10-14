@@ -12,7 +12,7 @@ export class ListNjComponent implements OnInit {
   constructor(private njService: NjserviceService,private router: Router) { this.newJoiners = [];}
 
   ngOnInit() {
-    this.njService.getNewJoiners().subscribe(res => { this.newJoiners = res;})
+    this.njService.getNewJoiners('false').subscribe(res => { this.newJoiners = res; console.log(res)})
   }
   viewNJ(event: any, njId: number): void {
     event.stopPropagation();

@@ -17,6 +17,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -27,9 +28,12 @@ public class Equipment_newJoinerService {
     private final EquipmentRepository equipmentRepository;
 
     public List<Equipment_newJoiner> addEquipment_newJoiner(List<Long> equipmentIdsList, Long newJoinerID) {
-
         NewJoiner newJoiner = newJoinerRepository.findById(newJoinerID);
 
+        List<Equipment_newJoiner> oldEquipmentd = equipment_newJoinerRepository.findAllByNewJoinerId(newJoinerID);
+        for(Equipment_newJoiner eqn : oldEquipmentd){
+            equipment_newJoinerRepository.delete(eqn);
+        }
         List<Equipment_newJoiner> toReturn = new ArrayList<>();
 
         for(int i = 0; i < equipmentIdsList.size(); ++i) {

@@ -1,17 +1,22 @@
   <div class="card shadow-lg rounded-9 big-card" style="width: 96vw; margin: 2vw;">
     <div class="container">
       <div class="row" style="display: flex; justify-content: center;">
-        <div class="col-3 card shadow-sm mt-3" (click)="viewNJ($event, nj.id)"
+        <div class="col-3 card shadow-lg mt-3" (click)="viewNJ($event, nj.id)"
           style="width: 25rem; height: fit-content; margin: 0 1em 2em 1em; padding: 0 !important;"
           *ngFor="let nj of newJoiners">
-           <div class="card-body">
+            <div class="card-body">
+              <img
+              id="profile-img"
+              src="//ssl.gstatic.com/accounts/ui/avatar_2x.png"
+              class="profile-img-card"
+            />
                     <h5 class="card-title text-center">{{nj.lastName}} {{nj.firstName}}</h5>
             <p class="card-text text-center">
               Project: {{nj.project}}
             </p>
             <p class="card-text text-center">
                 Start date: {{nj.startDate.substring(0,10)}} <br>
-                <input class="form-check-input" disabled type="checkbox" id="done">
+                <input class="form-check-input" disabled type="checkbox" id="done"  [checked]="newJoiner!=undefined && newJoiner.done==true">
                 <label class="form-check-label" for="done"> Done</label>
               </p>          
            </div>

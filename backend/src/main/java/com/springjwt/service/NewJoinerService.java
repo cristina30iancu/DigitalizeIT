@@ -44,30 +44,22 @@ public class NewJoinerService {
     public JwtUser getCurrentUser() {
         return userService.getUserByEmail((String)SecurityContextHolder.getContext().getAuthentication().getPrincipal());
     }
-    public List<NewJoiner> getNewJoinerListByRole() {
+    public List<NewJoiner> getNewJoinerListByRole(Boolean done) {
         Collection<GrantedAuthority> authorities = (Collection<GrantedAuthority>)
                 SecurityContextHolder.getContext().getAuthentication().getAuthorities();
         JwtUser currentlyAuthenticated = getCurrentUser();
         Iterator<GrantedAuthority> itr = authorities.iterator();
         GrantedAuthority authority = itr.hasNext()? itr.next() : null;
-        List<NewJoiner> allNewJoiners = getAllNewJoiners();
+        List<NewJoiner> allNewJoiners = getAllNewJoinersByStartDate();
         if(authority.getAuthority().equals(ERole.ROLE_IT_SUPPORT.name())) {
-            return allNewJoiners.stream().filter(n -> n.getDone() == false).collect(Collectors.toList());
+            return allNewJoiners.stream().filter(n -> n.getDone() == done).collect(Collectors.toList());
         }
         else {
-            return currentlyAuthenticated.getNewJoiners().stream().filter(n -> n.getDone() == false).collect(Collectors.toList());
+            return currentlyAuthenticated.getNewJoiners().stream().filter(n -> n.getDone() == done).collect(Collectors.toList());
         }
     }
     public List<NewJoiner> getAllNewJoiners() {
         return newJoinerRepository.findAll();
-    }
-
-    public List<NewJoiner> getUserByFirst(String first) {
-        return newJoinerRepository.findAllByFirstName(first);
-    }
-
-    public List<NewJoiner> getUserByLast(String last) {
-        return newJoinerRepository.findAllByLastName(last);
     }
 
     public List<NewJoiner> findUsersByProject(String projectName) {

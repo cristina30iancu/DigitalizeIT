@@ -51,11 +51,10 @@ public class NewJoinerController {
     }
     //  -----------------------------------------------------------------------------------------------------------------------------
 
-    @GetMapping
-    public List<NewJoiner> getNewJoinerListByRole() {
-        return newJoinerService.getNewJoinerListByRole();
+    @GetMapping("/done/{done}")
+    public List<NewJoiner> getNewJoinerListByRole(@PathVariable Boolean done) {
+        return newJoinerService.getNewJoinerListByRole(done);
     }
-
     @GetMapping("equipment/{userId}")
     public List<Equipment> equipmentForUser(@PathVariable Long userId){
         return newJoinerService.equipmentForUser(userId);
