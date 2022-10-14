@@ -23,10 +23,15 @@ public class NewJoinerService {
     private final UserRepository userRepository;
     private final UserService userService;
     private final EquipmentService equipmentService;
+    private final EmailSenderService emailSenderService;
 
     public NewJoiner saveNewJoiner(NewJoiner newJoiner) {
         JwtUser manager = getCurrentUser();
         manager.addNewJoiner(newJoiner);
+        List<JwtUser> userList = userService.getAllItSupport();
+        for(int i=0;i<userList.size();i++){
+            emailSenderService.sendEmail(userList.get(i).getEmail(),"DigitalizeIT", "A new joiner has been added");
+        }
         return newJoinerRepository.save(newJoiner);
     }
     public NewJoiner findAllByName(String first, String last) {
