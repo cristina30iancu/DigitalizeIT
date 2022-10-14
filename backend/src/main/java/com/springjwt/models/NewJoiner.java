@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -35,11 +36,8 @@ public class NewJoiner {
     private Position position;
 
     @ManyToMany
-    private List<JwtUser> jwtUsers;
+    private List<JwtUser> jwtUsers = new ArrayList<>();
 
     @OneToMany
     private List<Equipment_newJoiner> equipment_newJoiners;
-
-
-
 }

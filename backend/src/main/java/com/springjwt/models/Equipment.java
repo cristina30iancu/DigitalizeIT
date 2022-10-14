@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -33,6 +34,6 @@ public class Equipment {
 
 
     @OneToMany
-    private List<Equipment_newJoiner> equipment_newJoiner;
+    private List<Equipment_newJoiner> equipment_newJoiner = new ArrayList<>();
 
 }
