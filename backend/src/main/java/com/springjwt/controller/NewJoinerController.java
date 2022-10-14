@@ -34,7 +34,7 @@ public class NewJoinerController {
     public List<NewJoiner> findByProject(@PathVariable String title) {
         return newJoinerService.findUsersByProject(title);
     }
-    
+
     @PostMapping
     @PreAuthorize("hasRole('ROLE_MANAGER')")
     public NewJoiner saveNewJoiner(@RequestBody NewJoiner newJoiner) {
