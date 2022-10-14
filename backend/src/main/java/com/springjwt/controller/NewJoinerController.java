@@ -34,18 +34,13 @@ public class NewJoinerController {
     public List<NewJoiner> findByProject(@PathVariable String title) {
         return newJoinerService.findUsersByProject(title);
     }
-
-    // De Testat ------------------------------------------------------------------------------------------------------------------
+    
     @PostMapping
     @PreAuthorize("hasRole('ROLE_MANAGER')")
     public NewJoiner saveNewJoiner(@RequestBody NewJoiner newJoiner) {
-        List<JwtUser> userList = userService.getAllItSupport();
-        for(int i=0;i<userList.size();i++){
-            emailSenderService.sendEmail(userList.get(i).getEmail(),"DigitalizeIT", "A new joiner has been added");
-        }
         return newJoinerService.saveNewJoiner(newJoiner);
     }
-    //  -----------------------------------------------------------------------------------------------------------------------------
+
 
     @GetMapping("{done}")
     public List<NewJoiner> getNewJoinerListByRole(@PathVariable Boolean done) {
