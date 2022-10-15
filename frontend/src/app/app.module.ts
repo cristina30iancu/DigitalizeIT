@@ -22,6 +22,7 @@ import {ScrollingModule} from '@angular/cdk/scrolling';
 import { HistoryComponent } from './history/history.component';
 import { ItSupportNjComponent } from './it-support-nj/it-support-nj.component';
 import { ManagerListNjComponent } from './manager-list-nj/manager-list-nj.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 @NgModule({
   declarations: [
     AppComponent,
@@ -43,7 +44,7 @@ import { ManagerListNjComponent } from './manager-list-nj/manager-list-nj.compon
     AppRoutingModule,
     FormsModule,
     HttpClientModule, 
-    RouterModule, ScrollingModule
+    RouterModule, ScrollingModule, BrowserAnimationsModule
   ],
   providers: [
     AuthGuard,
