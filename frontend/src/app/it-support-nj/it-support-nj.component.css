@@ -1,6 +1,7 @@
-#back {
+.big-box {
     width: 100%;
     background-image: url('src/background.jpg');
+    position: absolute;
 }
 
 .example-container {

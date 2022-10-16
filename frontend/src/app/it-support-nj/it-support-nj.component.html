@@ -1,5 +1,6 @@
-<div id="back">
-<div class="row p-4" style="display: flex; justify-content: space-between;">
+<div class="big-box">
+  <div class="container">
+<div class="row p-4 justify-content-around" style="display: flex; margin: auto;">
  
     <div class="col-6 card shadow-lg mt-3 text-center" style="justify-content: center; height: fit-content; margin: 0.5em; padding: 0 !important;">
       <div class="card-body">
@@ -20,7 +21,7 @@
         <div style="height: 60vh;">
           <h2 class="text-center">Drag equipments here when given</h2>
           <div cdkDropList #doneList="cdkDropList" [cdkDropListData]="done" [cdkDropListConnectedTo]="[equipmentsList]"
-            class="example-list" (cdkDropListDropped)="drop($event)">
+            class="example-list" (cdkDropListDropped)="drop($event)" style="border: none;">
             <div class="card shadow-lg mt-3" *ngIf="done.length > 0"
               style="height: fit-content;margin: 0.5em; padding: 0 !important;">
               <div class="card-body" *ngFor="let eq of done" >
@@ -33,15 +34,15 @@
             </div>
           </div>
         </div>
-        <button (click)="submit()" class="btn btn-primary btn-lg">Submit</button>
+        <button (click)="submit()" class="btn btn-primary btn-lg" style="width: 100%;">Submit</button>
       </div>
     </div>
   
     <div class="col-5 card shadow-lg mt-3">
       <h2 class="text-center m-3">Assigned equipments</h2>
-      <cdk-virtual-scroll-viewport appendOnly itemSize="70" class="example-viewport">
+      <cdk-virtual-scroll-viewport appendOnly itemSize="70" class="example-viewport" style="margin-bottom: 10px;">
          <div cdkDropList #equipmentsList="cdkDropList" [cdkDropListData]="equipments" [cdkDropListConnectedTo]="[doneList]"
-        class="example-list" (cdkDropListDropped)="drop($event)">
+        class="example-list" (cdkDropListDropped)="drop($event)" style="border: none; margin-bottom: 0;">
         <div class="card shadow-lg mt-3 example-box" *ngIf="equipments!=undefined"
           style="height: fit-content;margin: 0.5em; padding: 0 !important;">
           <div class="card-body" cdkDrag *cdkVirtualFor="let eq of equipments templateCacheSize: 0">
@@ -58,3 +59,5 @@
     </cdk-virtual-scroll-viewport>
     </div>
   </div>
+</div>
+</div>

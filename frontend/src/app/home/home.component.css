@@ -1,6 +1,6 @@
 .title {
   text-align: center;
-  font-weight: bold;
+  font-weight: 400;
   font-size: 25px;
   color: azure;
   position: relative;
@@ -29,6 +29,7 @@
 .description {
   position: absolute;
   text-align: center;
+  font-weight: 200;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
