@@ -2,7 +2,7 @@
   <div class="container">
 <div class="row p-4 justify-content-around" style="display: flex; margin: auto;">
  
-    <div class="col-6 card shadow-lg mt-3 text-center" style="justify-content: center; height: fit-content; margin: 0.5em; padding: 0 !important;">
+    <div class="col-6 card shadow-lg mt-3 text-center" style="justify-content: center; height: fit-content; margin: 0.5em; margin-bottom: 0%; padding: 0 !important;">
       <div class="card-body">
         <h5 class="card-title text-center mt-3">{{newJoiner.lastName}} {{newJoiner.firstName}}</h5>
         <p class="card-text text-center">
@@ -38,7 +38,7 @@
       </div>
     </div>
   
-    <div class="col-5 card shadow-lg mt-3">
+    <div class="col-5 card shadow-lg mt-3" style="margin-bottom: 0%;">
       <h2 class="text-center m-3">Assigned equipments</h2>
       <cdk-virtual-scroll-viewport appendOnly itemSize="70" class="example-viewport" style="margin-bottom: 10px;">
          <div cdkDropList #equipmentsList="cdkDropList" [cdkDropListData]="equipments" [cdkDropListConnectedTo]="[doneList]"
