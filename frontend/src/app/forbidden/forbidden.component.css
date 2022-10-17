@@ -1,13 +1,9 @@
 div {
     width: 100%;
     height: 100vh;
-    background-image: url("/background.jpg");
+    background-image: url("src/background.jpg");
 }
-
-.center {
-    position: relative;
-}
-
+  
 .center p {
     position: absolute;
     text-align: center;
