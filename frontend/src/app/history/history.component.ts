@@ -12,10 +12,11 @@ export class HistoryComponent implements OnInit {
   constructor(private njService: NjserviceService,private router: Router) { this.newJoiners = [];}
 
   ngOnInit() {
+    this.newJoiners = []
     this.njService.getNewJoiners('true').subscribe(res => { this.newJoiners = res;})
   }
   viewNJ(event: any, njId: number): void {
     event.stopPropagation();
-   this.router.navigate(['newJoiner', njId,'it-support']);
+   this.router.navigate(['history','newJoiner', njId]);
   }
 }

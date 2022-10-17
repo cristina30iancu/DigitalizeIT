@@ -1,0 +1,44 @@
+<div class="row p-4" style="display: flex; justify-content: space-between;">
+ 
+    <div class="col-6 card shadow-lg mt-3 text-center" style="justify-content: center; height: fit-content; margin: 0.5em; padding: 0 !important;">
+      <div class="card-body">
+        <h5 class="card-title text-center mt-3">{{newJoiner.lastName}} {{newJoiner.firstName}}</h5>
+        <p class="card-text text-center">
+          Project: {{newJoiner.project}}
+        </p>
+        <p class="card-text text-center"> 
+          Position: {{newJoiner.position}}
+        </p>
+        <p class="card-text text-center">
+          Start date: {{newJoiner.startDate.substring(0,10)}} <br>
+          <input class="form-check-input" disabled type="checkbox" id="done"  [checked]="newJoiner!=undefined && newJoiner.done==true">
+          <label class="form-check-label mb-3" for="done"> Done</label> 
+        
+        </p>
+        <hr>
+        <div style="height: 60vh;"></div>
+        </div>
+    </div>
+  
+    <div class="col-5 card shadow-lg mt-3">
+      <h2 class="text-center m-3">Given equipments</h2>
+      <cdk-virtual-scroll-viewport appendOnly itemSize="70" class="example-viewport">
+         <div  class="example-list" >
+        <div class="card shadow-lg mt-3 example-box" *ngIf="equipments.length > 0"
+          style="height: fit-content;margin: 0.5em; padding: 0 !important;">
+          <div class="card-body" cdkDrag *cdkVirtualFor="let eq of equipments templateCacheSize: 0">
+            <!-- <hr style="margin-top: -1.7em;"> -->
+  
+            <div class="input-group-prepend" style="margin-top: -1.7em;">
+              <div class="input-group-text material-icons text-center">devices</div>
+               </div>
+            <h5 class="card-title text-center">{{eq.name}}</h5>
+            <p class="card-text text-center">
+              Specifications: {{eq.specifications}}
+            </p>
+          </div>
+        </div>
+      </div>  
+    </cdk-virtual-scroll-viewport>
+      
+    </div>
