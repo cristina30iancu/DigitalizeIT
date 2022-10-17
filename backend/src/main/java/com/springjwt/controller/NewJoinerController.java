@@ -25,6 +25,10 @@ public class NewJoinerController {
         return newJoinerService.getAllNewJoiners();
     }
 
+    @GetMapping("/{id}")
+    public NewJoiner findById(@PathVariable Long id) {
+        return newJoinerService.getById(id);
+    }
     @GetMapping("getByName")
     public NewJoiner findByName(@RequestBody NewJoinerForm user) {
         return newJoinerService.findAllByName(user.getFirstName(), user.getLastName());
@@ -41,12 +45,10 @@ public class NewJoinerController {
         return newJoinerService.saveNewJoiner(newJoiner);
     }
 
-
-    @GetMapping("{done}")
+    @GetMapping("/done/{done}")
     public List<NewJoiner> getNewJoinerListByRole(@PathVariable Boolean done) {
         return newJoinerService.getNewJoinerListByRole(done);
     }
-
     @GetMapping("equipment/{userId}")
     public List<Equipment> equipmentForUser(@PathVariable Long userId){
         return newJoinerService.equipmentForUser(userId);

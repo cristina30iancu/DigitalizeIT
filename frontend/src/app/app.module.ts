@@ -16,7 +16,13 @@ import { AuthInterceptor } from './_auth/auth.interceptor';
 import { UserService } from './_services/user.service';
 import { ListNjComponent } from './list-nj/list-nj.component';
 import { HashLocationStrategy, LocationStrategy } from '@angular/common';
-
+import { NjDetailsComponent } from './nj-details/nj-details.component';
+import { DragDropModule } from '@angular/cdk/drag-drop';
+import {ScrollingModule} from '@angular/cdk/scrolling';
+import { HistoryComponent } from './history/history.component';
+import { ItSupportNjComponent } from './it-support-nj/it-support-nj.component';
+import { ManagerListNjComponent } from './manager-list-nj/manager-list-nj.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 @NgModule({
   declarations: [
     AppComponent,
@@ -26,14 +32,19 @@ import { HashLocationStrategy, LocationStrategy } from '@angular/common';
     LoginComponent,
     HeaderComponent,
     ForbiddenComponent,
-    ListNjComponent
+    ListNjComponent,
+    NjDetailsComponent,
+    HistoryComponent,
+    ItSupportNjComponent,
+    ManagerListNjComponent
   ],
   imports: [
     BrowserModule,
+    DragDropModule,
     AppRoutingModule,
     FormsModule,
     HttpClientModule, 
-    RouterModule
+    RouterModule, ScrollingModule, BrowserAnimationsModule
   ],
   providers: [
     AuthGuard,

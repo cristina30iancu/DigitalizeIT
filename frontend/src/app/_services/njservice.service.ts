@@ -16,8 +16,18 @@ export class NjserviceService {
       headers: this.requestHeader
     });
   }
-  public getNewJoiners(){
-    return this.httpclient.get(this.PATH_OF_API+ '/newJoiner', {
+  public getEquipments(position){
+    return this.httpclient.get(this.PATH_OF_API+ '/equipment/'+position, {
+      headers: this.requestHeader
+    });
+  }
+  public getNewJoiners(done){
+    return this.httpclient.get(this.PATH_OF_API+ '/newJoiner/done/'+done, {
+      headers: this.requestHeader
+    });
+  }
+  public getNewJoinerById(id){
+    return this.httpclient.get(this.PATH_OF_API+ '/newJoiner/'+id, {
       headers: this.requestHeader
     });
   }
@@ -26,4 +36,24 @@ export class NjserviceService {
       headers: this.requestHeader
     })
   }
-}
+  public assignEquipment(newJoinerId, eqList: any[]){
+    return this.httpclient.put(this.PATH_OF_API+'/equipmentNewJoiner/'+newJoinerId, eqList, {
+      headers: this.requestHeader
+    })
+  }
+  public getAssignedEquipments(newJoinerId){
+    return this.httpclient.get(this.PATH_OF_API+'/equipmentNewJoiner/equipmentsOfNewjoiner/'+newJoinerId, {
+      headers: this.requestHeader
+    })
+  }
+  public getDoneEquipments(newJoinerId){
+    return this.httpclient.get(this.PATH_OF_API+'/equipmentNewJoiner/equipmentsOfNewjoiner/'+newJoinerId+'/done', {
+      headers: this.requestHeader
+    })
+  }
+  public updateEquipments(newJoinerId,eqId){
+    return this.httpclient.put(this.PATH_OF_API+'/equipmentNewJoiner/'+newJoinerId +'/'+eqId, {
+      headers: this.requestHeader
+    })
+  }
+} 

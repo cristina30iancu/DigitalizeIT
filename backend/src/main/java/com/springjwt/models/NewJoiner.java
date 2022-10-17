@@ -39,5 +39,7 @@ public class NewJoiner {
     private List<JwtUser> jwtUsers = new ArrayList<>();
 
     @OneToMany
-    private List<Equipment_newJoiner> equipment_newJoiners;
+    private List<Equipment_newJoiner> equipment_newJoiners = new ArrayList<>();
+
+
 }

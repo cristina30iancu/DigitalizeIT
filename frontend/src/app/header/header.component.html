@@ -16,16 +16,27 @@
           </li>
           <li class="nav-item">
             <a class="nav-link active" aria-current="page" routerLink="/list"
-           >List New Joiners</a>
+            *ngIf="userService.roleMatch('ROLE_MANAGER')"
+           >New Joiners</a>
           </li>
           <li class="nav-item">
             <a class="nav-link active" aria-current="page" routerLink="/user"
             *ngIf="userService.roleMatch('ROLE_IT_SUPPORT')"
-            >User Dashboard</a>
+            >New Joiners</a>
           </li>
-         
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" routerLink="/history"
+            *ngIf="isLoggedIn()" 
+           >History</a>
+          </li>
         </ul>
-        <button *ngIf="! isLoggedIn()" type="button" class="btn btn-success" routerLink="/login">Login
+        <h3 class="nav-item mr-3" style="margin-top: 12px; margin-right:30px; color: white;" aria-current="page" routerLink="#"
+        *ngIf="userService.roleMatch('ROLE_MANAGER')"
+       >Manager page</h3>
+       <h3 class="nav-item mr-3" style="margin-right:30px; color: white; margin-top: 12px;"  aria-current="page" routerLink="#"
+       *ngIf="userService.roleMatch('ROLE_IT_SUPPORT')"
+       >IT Support page</h3>
+        <button *ngIf="! isLoggedIn()" type="button" class="btn btn-info" routerLink="/login">Login
           </button>
         <button *ngIf="isLoggedIn()" type="button" class="btn btn-outline-danger" (click)="logout()" >Logout</button>
       </div>

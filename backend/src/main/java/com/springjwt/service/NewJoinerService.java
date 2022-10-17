@@ -43,6 +43,9 @@ public class NewJoinerService {
         return equipmentService.getByPosition(joiner.getPosition());
 
     }
+    public NewJoiner getById(Long id) {
+        return newJoinerRepository.findById(id);
+    }
 
     public JwtUser getCurrentUser() {
         return userService.getUserByEmail((String)SecurityContextHolder.getContext().getAuthentication().getPrincipal());
@@ -53,7 +56,7 @@ public class NewJoinerService {
         JwtUser currentlyAuthenticated = getCurrentUser();
         Iterator<GrantedAuthority> itr = authorities.iterator();
         GrantedAuthority authority = itr.hasNext()? itr.next() : null;
-        List<NewJoiner> allNewJoiners = getAllNewJoiners();
+        List<NewJoiner> allNewJoiners = getAllNewJoinersByStartDate();
         if(authority.getAuthority().equals(ERole.ROLE_IT_SUPPORT.name())) {
             return allNewJoiners.stream().filter(n -> n.getDone() == done).collect(Collectors.toList());
         }
@@ -74,7 +77,6 @@ public class NewJoinerService {
     public List<NewJoiner> getUserByLast(String last) {
         return newJoinerRepository.findAllByLastName(last);
     }
-
     public List<NewJoiner> findUsersByProject(String projectName) {
         return newJoinerRepository.findNewJoinersByProject(projectName);
     }
