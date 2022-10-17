@@ -48,6 +48,15 @@ public class Equipment_newJoinerController {
                 map(en -> en.getEquipment()).collect(Collectors.toList());
         return toReturn;
     }
+    @GetMapping("{newJoinerId}")
+    //@PreAuthorize("hasRole(ROLE_MANAGER)")
+    public List<Equipment> egetEquipmentsOfNewJoinerDone(@PathVariable Long newJoinerId) {
+        List<Equipment_newJoiner> all = equipment_newJoinerService.getAll();
+        List<Equipment> toReturn = all.stream().
+                filter(en -> en.getNewJoiner().getId() == newJoinerId && en.getDone().booleanValue() == true).
+                map(en -> en.getEquipment()).collect(Collectors.toList());
+        return toReturn;
+    }
     @GetMapping("equipmentsOfNewjoiner/{newJoinerId}/done")
     //@PreAuthorize("hasRole(ROLE_MANAGER)")
     public List<Equipment> getEquipmentsOfNewJoinerByDone(@PathVariable Long newJoinerId) {
