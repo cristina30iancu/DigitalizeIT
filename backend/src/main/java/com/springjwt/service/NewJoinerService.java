@@ -70,4 +70,7 @@ public class NewJoinerService {
         return newJoinerRepository.findAllByOrderByStartDateAsc();
     }
 
+    public void deleteAll() {
+        this.newJoinerRepository.deleteAll();
+    }
 }

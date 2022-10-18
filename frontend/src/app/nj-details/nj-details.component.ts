@@ -13,6 +13,7 @@ export class NjDetailsComponent implements OnInit {
   newJoiner: any;
   equipments: any;
   done :any;
+  submitted: Boolean;
   eqListIds = [];
   constructor(private njService: NjserviceService) { }
 
@@ -46,10 +47,9 @@ export class NjDetailsComponent implements OnInit {
        } else console.error("id is zero, cannot send request");     
   }
   drop(event: CdkDragDrop<string[]>) {
+    this.submitted = false;
     if (event.previousContainer === event.container) {
-     
       moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
-      
       let newList = this.equipments
       this.equipments = [...newList] 
     } else {
@@ -68,6 +68,6 @@ export class NjDetailsComponent implements OnInit {
     for(let d of this.done){
       this.eqListIds.push(d.id);
     }
-    this.njService.assignEquipment(this.newJoiner.id, this.eqListIds).subscribe(res => console.log(res));
+    this.njService.assignEquipment(this.newJoiner.id, this.eqListIds).subscribe(res => this.submitted = true);
   }
 }

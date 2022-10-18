@@ -32,7 +32,10 @@
             </div>
           </div>
         </div>
-        <button (click)="submit()" class="btn btn-primary btn-lg">Submit</button>
+        <div *ngIf="submitted" class="alert alert-success text-center mt-3" role="alert">
+          Success!
+        </div>
+        <button (click)="submit()" class="btn btn-primary btn-lg" [disabled]="submitted==true || submitted == undefined">Submit</button>
       </div>
     </div>
   
