@@ -23,6 +23,7 @@ import { HistoryComponent } from './history/history.component';
 import { ItSupportNjComponent } from './it-support-nj/it-support-nj.component';
 import { ManagerListNjComponent } from './manager-list-nj/manager-list-nj.component';
 import { ViewHistoryComponent } from './view-history/view-history.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 @NgModule({
   declarations: [
     AppComponent,
@@ -45,7 +46,7 @@ import { ViewHistoryComponent } from './view-history/view-history.component';
     AppRoutingModule,
     FormsModule,
     HttpClientModule, 
-    RouterModule, ScrollingModule
+    RouterModule, ScrollingModule, BrowserAnimationsModule
   ],
   providers: [
     AuthGuard,

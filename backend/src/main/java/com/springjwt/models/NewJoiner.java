@@ -42,5 +42,4 @@ public class NewJoiner {
     private List<Equipment_newJoiner> equipment_newJoiners = new ArrayList<>();
 
 
-
 }

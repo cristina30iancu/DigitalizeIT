@@ -1,3 +1,8 @@
+.big-box {
+  width: 100%;
+  background-image: url('src/background.jpg');
+}
+
 .profile-img-card {
     width: 96px;
     height: 96px;

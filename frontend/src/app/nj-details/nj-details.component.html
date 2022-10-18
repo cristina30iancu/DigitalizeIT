@@ -1,6 +1,7 @@
-<div class="row p-4" style="display: flex; justify-content: space-between;">
- 
-  <div class="col-6 card shadow-lg mt-3 text-center" style="justify-content: center; height: fit-content; margin: 0.5em; padding: 0 !important;">
+<div class="big-box">
+  <div class="container">
+<div class="row p-4 justify-content-around" style="display: flex; margin: auto;">
+  <div class="col-5 card shadow-lg mt-3 text-center" style="justify-content: center; height: fit-content; margin: 0.5em; margin-bottom: 0%; padding: 0 !important;">
     <div class="card-body">
       <h5 class="card-title text-center mt-3">{{newJoiner.lastName}} {{newJoiner.firstName}}</h5>
       <p class="card-text text-center">
@@ -19,7 +20,7 @@
       <div style="height: 60vh;">
         <h2 class="text-center">Drag equipments here</h2>
         <div cdkDropList #doneList="cdkDropList" [cdkDropListData]="done" [cdkDropListConnectedTo]="[equipmentsList]"
-          class="example-list" (cdkDropListDropped)="drop($event)">
+          class="example-list" (cdkDropListDropped)="drop($event)" style="border: none;">
           <div class="card shadow-lg mt-3 example-box"
             style="height: fit-content;margin: 0.5em; padding: 0 !important;">
             <div class="card-body" *ngFor="let eq of done" cdkDrag>
@@ -35,18 +36,19 @@
       <div *ngIf="submitted" class="alert alert-success text-center mt-3" role="alert">
         Success!
       </div>
-      <button (click)="submit()" class="btn btn-primary btn-lg"[disabled]="submitted==true || submitted == undefined">Submit</button>
+      <button (click)="submit()" class="btn btn-primary btn-lg" [disabled]="submitted==true || submitted == undefined">Submit</button>
+  
     </div>
   </div>
 
-  <div class="col-5 card shadow-lg mt-3">
+  <div class="col-5 card shadow-lg mt-3" style="margin-bottom: 0%;">
     <h2 class="text-center m-3">Available equipments</h2>
-    <cdk-virtual-scroll-viewport appendOnly itemSize="70" class="example-viewport">
+    <cdk-virtual-scroll-viewport appendOnly itemSize="70" class="example-viewport" style="margin-bottom: 10px;">
        <div cdkDropList #equipmentsList="cdkDropList" [cdkDropListData]="equipments" [cdkDropListConnectedTo]="[doneList]"
-      class="example-list" (cdkDropListDropped)="drop($event)">
+      class="example-list" (cdkDropListDropped)="drop($event)" style="border: none; margin-bottom: 0;">
       <div class="card shadow-lg mt-3 example-box" *ngIf="equipments.length > 0"
         style="height: fit-content;margin: 0.5em; padding: 0 !important;">
-        <div class="card-body" cdkDrag *cdkVirtualFor="let eq of equipments templateCacheSize: 0">
+        <div class="card-body shadow-lg mt-3 example-box" cdkDrag *cdkVirtualFor="let eq of equipments templateCacheSize: 0" style="border-radius: 5px;">
           <!-- <hr style="margin-top: -1.7em;"> -->
 
           <div class="input-group-prepend" style="margin-top: -1.7em;">
@@ -62,3 +64,6 @@
   </cdk-virtual-scroll-viewport>
     
   </div>
+</div>
+</div>
+</div>
