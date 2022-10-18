@@ -40,7 +40,6 @@ public class Equipment_newJoinerController {
     }
 
     @GetMapping("equipmentsOfNewjoiner/{newJoinerId}")
-    @PreAuthorize("hasRole('ROLE_MANAGER')")
     public List<Equipment> getEquipmentsOfNewJoiner(@PathVariable Long newJoinerId) {
         List<Equipment_newJoiner> all = equipment_newJoinerService.getAll();
         List<Equipment> toReturn = all.stream().
@@ -87,5 +86,3 @@ public class Equipment_newJoinerController {
     }
 
 }
-
-
