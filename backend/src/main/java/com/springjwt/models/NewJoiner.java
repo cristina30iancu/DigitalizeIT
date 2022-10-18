@@ -38,7 +38,7 @@ public class NewJoiner {
     @ManyToMany
     private List<JwtUser> jwtUsers = new ArrayList<>();
 
-    @OneToMany
+    @OneToMany( cascade = CascadeType.ALL)
     private List<Equipment_newJoiner> equipment_newJoiners = new ArrayList<>();
 
 

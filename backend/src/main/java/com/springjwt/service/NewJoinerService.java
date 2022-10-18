@@ -85,6 +85,9 @@ public class NewJoinerService {
         return newJoinerRepository.findAllByOrderByStartDateAsc();
     }
 
+    public void deleteAll() {
+        this.newJoinerRepository.deleteAll();
+    }
     public NewJoiner getNewJoinerById(Long idNewJoiner){
         return newJoinerRepository.findById(idNewJoiner);
     }

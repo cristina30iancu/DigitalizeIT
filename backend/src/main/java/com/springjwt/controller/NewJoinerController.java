@@ -24,11 +24,16 @@ public class NewJoinerController {
     public List<NewJoiner> findAll() {
         return newJoinerService.getAllNewJoiners();
     }
-
+    @DeleteMapping("all")
+    public void deleteAll() {
+        newJoinerService.deleteAll();
+    }
     @GetMapping("/{id}")
     public NewJoiner findById(@PathVariable Long id) {
         return newJoinerService.getById(id);
     }
+
+
     @GetMapping("getByName")
     public NewJoiner findByName(@RequestBody NewJoinerForm user) {
         return newJoinerService.findAllByName(user.getFirstName(), user.getLastName());
@@ -53,6 +58,7 @@ public class NewJoinerController {
     public List<Equipment> equipmentForUser(@PathVariable Long userId){
         return newJoinerService.equipmentForUser(userId);
     }
+
 
     @GetMapping("startDate")
     public List<NewJoiner> getNewJoinerListByStartDate() {

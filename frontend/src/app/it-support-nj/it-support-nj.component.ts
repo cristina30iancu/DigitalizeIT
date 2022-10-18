@@ -12,11 +12,11 @@ export class ItSupportNjComponent implements OnInit {
   newJoiner: any;
   equipments: any;
   done: any;
+  submitted: Boolean;
   eqListIds = [];
   constructor(private njService: NjserviceService) { }
 
   async ngOnInit() {
-    // this.done = [];
     const path = window.location.href.split('/');
     const id = parseInt(path[path.length - 2]);
     await this.njService.getAssignedEquipments(id).subscribe(res => { this.equipments = res; })
@@ -32,7 +32,7 @@ export class ItSupportNjComponent implements OnInit {
   }
   drop(event: CdkDragDrop<string[]>) {
     if (event.previousContainer === event.container) {
-
+      this.submitted = false;
       moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
       console.log('if')
       let newList = this.equipments
@@ -46,10 +46,11 @@ export class ItSupportNjComponent implements OnInit {
       );
       let newList = this.equipments
       this.equipments = [...newList] }
-  }
+      this.submitted = false;
+    }
   submit() {
     for (let d of this.done) {
-      this.njService.updateEquipments(this.newJoiner.id, d.id).subscribe(res => console.log(res));
+      this.njService.updateEquipments(this.newJoiner.id, d.id).subscribe(res => this.submitted = true);
     }
   }
 }

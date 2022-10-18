@@ -33,7 +33,7 @@ public class Equipment {
     private Set<Position> position = new HashSet<>();
 
 
-    @OneToMany
+    @OneToMany( cascade = CascadeType.ALL)
     private List<Equipment_newJoiner> equipment_newJoiner = new ArrayList<>();
 
 }
